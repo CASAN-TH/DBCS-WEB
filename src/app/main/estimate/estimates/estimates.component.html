@@ -1,0 +1,80 @@
+<div class="page-layout carded  fullwidth" fusePerfectScrollbar>
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+    <!-- HEADER -->
+    <div
+      class="header accent"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between center"
+    >
+      <!-- APP TITLE -->
+      <div
+        class="logo mb-24 mb-md-0"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <mat-icon
+          class="logo-icon s-32 mr-16"
+          [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }"
+        >
+          format_list_numbered
+        </mat-icon>
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+          รายการคำของบประมาณ
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+
+      <!-- SEARCH -->
+      <div class="search-wrapper mx-32 mx-md-0">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon>search</mat-icon>
+          <input
+            placeholder="Search for a product"
+            (keyup)="updateFilter($event)"
+          />
+        </div>
+      </div>
+      <!-- / SEARCH -->
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <!-- CONTENT -->
+      <div class="content">
+        <ngx-datatable
+          #table
+          class="material"
+          [columns]="columns"
+          [columnMode]="ColumnMode.force"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          rowHeight="auto"
+          [limit]="10"
+          [rows]="rows"
+        >
+        </ngx-datatable>
+      </div>
+    </div>
+    <!-- /CONTENT CARD -->
+  </div>
+  <!-- /CENTER -->
+</div>
+<!-- ADD CONTACT BUTTON -->
+<button
+  fxLayoutAlign="center center"
+  class="mat-fab warn"
+  id="add-button"
+  aria-label="add"
+>
+  <mat-icon (click)="clickAdd()">add</mat-icon>
+</button>
+<!-- / ADD CONTACT BUTTON -->
