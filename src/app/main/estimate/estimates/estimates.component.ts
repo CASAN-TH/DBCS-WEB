@@ -60,7 +60,7 @@ export class EstimatesComponent implements OnInit {
 
     // filter our data
     const temp = this.temp.filter(function(d) {
-      return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+      return d.name.toLowerCase().indexOf(val) !== -1 || d.company.toLowerCase().indexOf(val) !== -1 || !val;
     });
 
     // update the rows

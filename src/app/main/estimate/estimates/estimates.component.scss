@@ -61,7 +61,7 @@
 
     @include media-breakpoint("s") {
         position: sticky;
-        top: calc(100vh - 120px);
+        top: calc(100vh - 70px);
         bottom: auto;
       }
   }

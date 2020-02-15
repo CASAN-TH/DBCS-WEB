@@ -1,4 +1,4 @@
-<div class="page-layout carded  fullwidth" fusePerfectScrollbar>
+<div class="page-layout carded  fullwidth inner-scroll">
   <!-- TOP BACKGROUND -->
   <div class="top-bg accent"></div>
   <!-- / TOP BACKGROUND -->
@@ -36,10 +36,7 @@
       <div class="search-wrapper mx-32 mx-md-0">
         <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
           <mat-icon>search</mat-icon>
-          <input
-            placeholder="Search for a product"
-            (keyup)="updateFilter($event)"
-          />
+          <input placeholder="ค้นหา" (keyup)="updateFilter($event)" />
         </div>
       </div>
       <!-- / SEARCH -->
@@ -52,15 +49,57 @@
       <div class="content">
         <ngx-datatable
           #table
-          class="material"
-          [columns]="columns"
-          [columnMode]="ColumnMode.force"
+          class="material fullscreen"
+          [columnMode]="'flex'"
           [headerHeight]="50"
           [footerHeight]="50"
           rowHeight="auto"
           [limit]="10"
           [rows]="rows"
         >
+          <ngx-datatable-column name="ชื่อโครงการ" [flexGrow]="2">
+            <ng-template ngx-datatable-cell-template let-row="row">
+              {{ row.name }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="กิจกรรมหลัก" [flexGrow]="2">
+            <ng-template ngx-datatable-cell-template let-row="row">
+              {{ row.gender }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="งบประมาณ" [flexGrow]="2">
+            <ng-template ngx-datatable-cell-template let-row="row">
+              {{ 20000000 | number }}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="สถานะ" [flexGrow]="2">
+            <ng-template ngx-datatable-cell-template let-row="row">
+              จัดทำข้อเสนอ
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column [flexGrow]="0.6">
+            <ng-template ngx-datatable-cell-template>
+              <button
+                class="mat-icon-button"
+                aria-label="More"
+                [matMenuTriggerFor]="moreMenu"
+                (click)="$event.stopPropagation()"
+              >
+                <mat-icon class="secondary-text">more_vert</mat-icon>
+              </button>
+
+              <mat-menu #moreMenu>
+                <button
+                  mat-menu-item
+                  aria-label="remove"
+                  (click)="deleteContact(contact)"
+                >
+                  <mat-icon>edit</mat-icon>
+                  <span>edit</span>
+                </button>
+              </mat-menu>
+            </ng-template>
+          </ngx-datatable-column>
         </ngx-datatable>
       </div>
     </div>
@@ -74,7 +113,8 @@
   class="mat-fab warn"
   id="add-button"
   aria-label="add"
+  (click)="clickAdd()"
 >
-  <mat-icon (click)="clickAdd()">add</mat-icon>
+  <mat-icon>add</mat-icon>
 </button>
 <!-- / ADD CONTACT BUTTON -->
