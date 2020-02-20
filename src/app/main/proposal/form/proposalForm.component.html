@@ -1,4 +1,4 @@
-<div class="page-layout carded  fullwidth inner-scroll">
+<div class="page-layout carded  fullwidth inner-scroll" >
   <!-- TOP BACKGROUND -->
   <div class="top-bg accent"></div>
   <!-- / TOP BACKGROUND -->
@@ -53,9 +53,10 @@
     <!-- CONTENT CARD -->
     <div class="content-card">
       <!-- CONTENT -->
-      <div class="content">
+      <div class="content" (drop)="drop($event)"
+      (dragover)="allowDrop($event)">
         <mat-tab-group fxFlex>
-          <mat-tab label="แบบฟอร์มข้อเสนอโครงการ (กผง001)">
+          <mat-tab label="แบบฟอร์มข้อเสนอโครงการ (กผง001)" >
            <app-form001 class="pt-2"  [proposalForm]="proposalForm" [lovData]="lovData"></app-form001>
           </mat-tab>
           <mat-tab label="แผนการดำเนินโครงการและแผนการใช้จ่ายเงินงบประมาณ (กผง002)" >

@@ -42,8 +42,19 @@ export class ProposalListComponent implements OnInit {
   }
 
   editProposal(ev){
-    console.log(ev.data._id);
-    this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
+    switch (ev.type){
+      case "edit":
+        this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
+        break;
+      case "delete":
+        this.propService.deleteProposalData(ev.data).then((res)=>{
+          this.propService.getProposalDataList().subscribe((res:any)=>{
+            this.rows = res.data;
+          })
+        })
+        break;
+    }
+    
   }
 
   updateFilter(event) {

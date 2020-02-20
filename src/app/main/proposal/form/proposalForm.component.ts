@@ -172,4 +172,23 @@ export class ProposalFormComponent implements OnInit {
     }
     
   }
+
+  drop(ev) {
+    ev.preventDefault();
+    const files = ev.dataTransfer.files;
+    console.log(files);
+    if(files[0].type ==="application/msword"){
+      alert(files[0].name)
+      
+      this.proposalService.uploadProposalData(files[0]).subscribe((res:any) => {
+        
+        this.proposalData =res.data;
+        this.proposalForm = this.createForm();
+      })
+    }
+  }
+
+  allowDrop(ev) {
+    ev.preventDefault();
+  }
 }

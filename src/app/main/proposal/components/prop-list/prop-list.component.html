@@ -39,6 +39,10 @@
               <mat-icon>edit</mat-icon>
               <span>แก้ไขโครงการ</span>
             </button>
+            <button mat-menu-item aria-label="edit" (click)="editProposalData('delete', rowIndex)">
+              <mat-icon>delete</mat-icon>
+              <span>ลบโครงการ</span>
+            </button>
           </mat-menu>
         </ng-template>
       </ngx-datatable-column>

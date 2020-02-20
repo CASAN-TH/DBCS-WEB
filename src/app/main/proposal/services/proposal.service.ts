@@ -5,6 +5,7 @@ import { Observable, BehaviorSubject } from "rxjs";
 import { environment } from "environments/environment";
 
 const api_url = environment.apiUrl + "/api/proposals/";
+const api_url_upload = environment.apiUrl + "/api/v1/proposals/upload";
 
 @Injectable({
   providedIn: "root"
@@ -54,6 +55,12 @@ export class ProposalService {
     return this.http.get(api_url + id, {
       headers: this.authorizationHeader()
     });
+  }
+
+  uploadProposalData(file: File) {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post(api_url_upload,formData);
   }
 
   createProposalData(body): Promise<any> {

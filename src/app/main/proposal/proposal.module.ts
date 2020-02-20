@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
-import { MatIconModule, MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule, MatExpansionModule } from "@angular/material";
+import { MatIconModule, MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule, MatExpansionModule, MatProgressSpinnerModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProposalService } from './services/proposal.service';
 import { PropListComponent } from './components/prop-list/prop-list.component';
@@ -58,6 +58,7 @@ const routes = [
     MatMenuModule,
     MatButtonModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
 
     
     RichTextEditorAllModule,
