@@ -9,6 +9,14 @@ import { EstimatesComponent } from "./estimates/estimates.component";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FacesheetComponent } from './components/facesheet/facesheet.component';
+import { BudgetPlanComponent } from './components/budget-plan/budget-plan.component';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {ResizableModule} from "angular-resizable-element";
+
+
+
 import { ProposalFormComponent } from './components/proposal-form/proposal-form.component';
 
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
@@ -27,7 +35,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent, ProposalFormComponent],
+  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent, BudgetPlanComponent, ProposalFormComponent],
   imports: [
     RouterModule.forChild(routes),
 
@@ -41,6 +49,12 @@ const routes = [
     MatTableModule,
     MatRadioModule,
     MatTabsModule,
+
+    MatTreeModule,
+    MatSliderModule,
+    MatToolbarModule,
+    ResizableModule,
+    
 
     MatIconModule,
     MatInputModule,
