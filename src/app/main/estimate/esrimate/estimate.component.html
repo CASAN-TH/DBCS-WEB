@@ -46,7 +46,8 @@
       <div class="content">
         <mat-tab-group fxFlex>
           <mat-tab label="ข้อมูลเสนอโครงการ">
-            <form [formGroup]="selectForm" class="mt-20" >
+            <app-proposal-form (submitClick)="onsubmit($event)"></app-proposal-form>
+            <!-- <form [formGroup]="selectForm" class="mt-20" >
               <div fxLayout="row">
                 <div
                   fxFlex="100"
@@ -194,7 +195,7 @@
                   </mat-form-field>
                 </div>
               </div>
-            </form>
+            </form> -->
           </mat-tab>
           <mat-tab label="ข้อมูลแผนการดำเนินโครงการ">
 
