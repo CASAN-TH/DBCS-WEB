@@ -9,14 +9,14 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 export class PropListComponent implements OnInit {
 
   @Input() rows: Array<any> = [];
-  @Output() editProposalBack: EventEmitter<any> = new EventEmitter();
+  @Output() editProposal: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
-  editProposal(type, index) {
-    this.editProposalBack.emit({
+  editProposalData(type, index) {
+    this.editProposal.emit({
       "type": type,
       "data": this.rows[index]
     });
