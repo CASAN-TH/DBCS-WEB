@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRouteSnapshot } from "@angular/router";
-import { Observable } from "rxjs";
+import { Observable, BehaviorSubject } from "rxjs";
 import { environment } from "environments/environment";
 
 const api_url = environment.apiUrl + '/api/proposals/';
@@ -11,6 +11,7 @@ const api_url = environment.apiUrl + '/api/proposals/';
 })
 export class ProposalService {
   routeParams: any;
+  onPropListDataChanged: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
   constructor(private http: HttpClient) {}
 
   private authorizationHeader() {
@@ -38,8 +39,9 @@ export class ProposalService {
         .get(api_url, {
           headers: this.authorizationHeader()
         })
-        .subscribe(res => {
+        .subscribe((res: any) => {
           console.log(res);
+          this.onPropListDataChanged.next(res.data)
         }, reject);
     });
   }
