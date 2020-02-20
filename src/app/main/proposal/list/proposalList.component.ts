@@ -6,6 +6,7 @@ import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
 import { Router } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
+import { ProposalService } from '../services/proposal.service';
 
 @Component({
   selector: 'app-proposal-list',
@@ -16,24 +17,29 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 })
 export class ProposalListComponent implements OnInit {
 
-  rows = [];
+  rows: Array<any>;
   temp = [];
   ColumnMode = ColumnMode;
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
-    private router: Router
+    private router: Router,
+    private propService: ProposalService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
 
-    this.fetch(data => {
-      // cache our list
-      this.temp = data;
+    this.propService.onPropListDataChanged.subscribe(res => {
+      this.rows = res;
+    })
 
-      // push our inital complete list
-      this.rows = data;
-      console.log(this.rows)
-    });
+    // this.fetch(data => {
+    //   // cache our list
+    //   this.temp = data;
+
+    //   // push our inital complete list
+    //   this.rows = data;
+    //   console.log(this.rows)
+    // });
   }
 
 
