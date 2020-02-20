@@ -1,12 +1,9 @@
 <div class="container" fxLayout="column">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <a mat-button [routerLink]="['/home']">
-        <mat-icon>home</mat-icon>
-      </a>
       <span>{{chartData == null ? null : chartData.name}}</span>
       <span fxFlex></span>
-      <span>Angular Gantt Chart</span>
+      <span>ข้อมูลแผนการดำเนินโครงการ</span>
     </mat-toolbar-row>
   </mat-toolbar>
   <div class="sidenav-container" fxFlex fxLayout="row">
