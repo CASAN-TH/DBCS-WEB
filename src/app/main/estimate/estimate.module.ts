@@ -8,6 +8,7 @@ import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatF
 import { EstimatesComponent } from "./estimates/estimates.component";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FacesheetComponent } from './components/facesheet/facesheet.component';
 
 
 const routes = [
@@ -24,7 +25,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [EstimateComponent, EstimatesComponent],
+  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent],
   imports: [
     RouterModule.forChild(routes),
 
