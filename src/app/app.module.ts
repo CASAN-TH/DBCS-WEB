@@ -27,6 +27,10 @@ const appRoutes: Routes = [
         loadChildren: './main/estimate/estimate.module#EstimateModule'
     },
     {
+        path : 'proposal',
+        loadChildren: './main/proposal/proposal.module#ProposalModule'
+    },
+    {
         path      : '**',
         redirectTo: 'estimate'
     }
