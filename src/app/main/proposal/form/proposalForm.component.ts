@@ -123,34 +123,32 @@ export class ProposalFormComponent implements OnInit {
 
   createForm(): FormGroup {
     return this.formBuilder.group({
-      compcode: [this.proposalData.compcode, Validators.required],
-      deptcode: [this.proposalData.deptcode, Validators.required],
+      compcode: [this.proposalData.compcode],
+      deptcode: [this.proposalData.deptcode],
       plancode: [this.proposalData.plancode, Validators.required],
       projectcode: [this.proposalData.projectcode, Validators.required],
       activitycode: [this.proposalData.activitycode, Validators.required],
       sourcecode: [this.proposalData.sourcecode, Validators.required],
       name: [this.proposalData.name, Validators.required],
       owner: [this.proposalData.owner, Validators.required],
-      criteria: [this.proposalData.criteria, Validators.required],
-      objectives: [this.proposalData.objectives, Validators.required],
+      criteria: [this.proposalData.criteria],
+      objectives: [this.proposalData.objectives],
       relatetostrategy1: [
-        this.proposalData.relatetostrategy1,
-        Validators.required
+        this.proposalData.relatetostrategy1
       ],
       relatetostrategy2: [
-        this.proposalData.relatetostrategy2,
-        Validators.required
+        this.proposalData.relatetostrategy2
       ],
-      location: [this.proposalData.location, Validators.required],
-      targetgroup: [this.proposalData.targetgroup, Validators.required],
-      timeline: [this.proposalData.timeline, Validators.required],
-      process: [this.proposalData.process, Validators.required],
-      resulthistory: [this.proposalData.resulthistory, Validators.required],
-      budgetpaln: [this.proposalData.budgetpaln, Validators.required],
-      output: [this.proposalData.output, Validators.required],
-      outcome: [this.proposalData.outcome, Validators.required],
-      benefit: [this.proposalData.benefit, Validators.required],
-      indicator: [this.proposalData.indicator, Validators.required]
+      location: [this.proposalData.location],
+      targetgroup: [this.proposalData.targetgroup],
+      timeline: [this.proposalData.timeline],
+      process: [this.proposalData.process],
+      resulthistory: [this.proposalData.resulthistory],
+      budgetpaln: [this.proposalData.budgetpaln],
+      output: [this.proposalData.output],
+      outcome: [this.proposalData.outcome],
+      benefit: [this.proposalData.benefit],
+      indicator: [this.proposalData.indicator]
     });
   }
 
@@ -160,9 +158,18 @@ export class ProposalFormComponent implements OnInit {
 
   async onSave() {
     console.log(this.proposalForm.value);
-    let res = await this.proposalService.createProposalData(
-      this.proposalForm.value
-    );
-    console.log(res);
+    if(this.proposalData._id){
+      this.proposalForm.value._id = this.proposalData._id;
+      
+      this.proposalService.updateProposalData(this.proposalForm.value).then((res)=>{
+        console.log(res);
+        this.location.back();
+      })
+    }else{
+      this.proposalService.createProposalData(this.proposalForm.value).then(()=>{
+        this.location.back();
+      })
+    }
+    
   }
 }

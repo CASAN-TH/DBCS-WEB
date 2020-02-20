@@ -61,7 +61,8 @@ export class ProposalService {
       this.http
         .post(api_url, body, { headers: this.authorizationHeader() })
         .subscribe((res: any) => {
-          this.getProposalDataList();
+          // this.getProposalDataList();
+          resolve(res.data);
         }, reject);
     });
   }
@@ -71,7 +72,8 @@ export class ProposalService {
       this.http
         .put(api_url + body._id, body, { headers: this.authorizationHeader() })
         .subscribe((res: any) => {
-          this.getProposalDataList();
+          // this.getProposalDataList();
+          resolve(res.data);
         }, reject);
     });
   }
@@ -81,7 +83,8 @@ export class ProposalService {
       this.http
         .delete(api_url + body._id, { headers: this.authorizationHeader() })
         .subscribe((res: any) => {
-          this.getProposalDataList();
+          // this.getProposalDataList();
+          resolve(res.data);
         }, reject);
     });
   }

@@ -15,7 +15,7 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.plancode">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>ผลผลิต/โครงการ</mat-label>
       <mat-select
@@ -31,7 +31,7 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.projectcode">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>กิจกรรม</mat-label>
       <mat-select formControlName="activitycode" name="activitycode">
@@ -43,7 +43,7 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.activitycode">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>แหล่งเงิน</mat-label>
       <mat-select formControlName="sourcecode" name="sourcecode">
@@ -55,14 +55,14 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.sourcecode">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>ชื่อโครงการ</mat-label>
       <textarea matInput formControlName="name" name="name"></textarea>
     </mat-form-field>
   </div>
 
-  <div fxLayout="row">
+  <div fxLayout="row" *ngIf="proposalForm.value.name">
     <div
       fxFlex="100"
       fxFlex.gt-sm="50"
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="start start">
+  <div fxLayout="row" fxLayoutAlign="start start" *ngIf="proposalForm.value.name">
     <div
       fxFlex="100"
       fxFlex.gt-sm="50"
@@ -112,7 +112,7 @@
     </div>
   </div>
 
-  <mat-accordion style="margin: 10">
+  <mat-accordion style="margin: 10" *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -126,7 +126,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -140,7 +140,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -154,7 +154,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -168,7 +168,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -182,7 +182,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -196,7 +196,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -210,7 +210,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -224,7 +224,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -238,7 +238,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -252,7 +252,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -266,7 +266,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -280,7 +280,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -294,7 +294,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -308,7 +308,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="proposalForm.value.name">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>

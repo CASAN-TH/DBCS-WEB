@@ -32,10 +32,6 @@
       <div class="content">
         <mat-tab-group fxFlex>
           <mat-tab label="ข้อมูลเสนอโครงการ">
-<<<<<<< HEAD
-            <app-proposal-form></app-proposal-form>
-=======
-
             <app-proposal-form [proposalForm]="proposalForm" [plan]="plan" [product]="product" [activity]="activity"
             [moneysource]="moneysource"></app-proposal-form>
 
@@ -48,10 +44,9 @@
               </div>
             </div>
 
->>>>>>> f942630a49978cef49ec1cbd838b7084ab7bcf33
           </mat-tab>
           <mat-tab label="ข้อมูลแผนการดำเนินโครงการ">
-
+            <app-budget-plan></app-budget-plan>
           </mat-tab>
           <mat-tab label="ข้อมูลเอกสารเสนอขอ">
             <app-facesheet></app-facesheet>

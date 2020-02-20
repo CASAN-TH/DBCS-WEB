@@ -28,9 +28,17 @@ export class Form001Component implements OnInit {
     this.sourceDataList = this.lovData.filter((item: any) => {
       return item.msttype === "expense" && item.parentcode === "0";
     });
+
+    this.projectDataList = this.lovData.filter((item: any) => {
+      return item.msttype === "plan" && item.parentcode === this.proposalForm.value.plancode;
+    });
+    this.activityDataList = this.lovData.filter((item: any) => {
+      return item.msttype === "plan" && item.parentcode === this.proposalForm.value.projectcode;
+    });
   }
 
   onPlanChange(e) {
+    console.log(e.value);
     this.projectDataList = this.lovData.filter((item: any) => {
       return item.msttype === "plan" && item.parentcode === e.value;
     });

@@ -39,7 +39,7 @@
           
         </div>
         <div fxFlex="100" fxFlex.gt-sm="40" class="pl-20  pr-16" fxLayoutAlign="end">
-          <button (click)="onSave()">
+          <button [disabled]="proposalForm.invalid" (click)="onSave()">
             บันทึกข้อมูล
           </button>
         </div>
