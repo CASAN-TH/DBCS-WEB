@@ -1,3 +1,50 @@
-<p>
-  facesheet works!
-</p>
+<!-- <div fxLayout="row wrap" class="borderzone">
+  <div class="filebox" fxFlex="30" fxLayoutAlign="center" *ngFor="let filename of filenames">
+    <p class="text-container">{{filename.name}}</p>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center" (drop)="drop($event)" (dragover)="allowDrop($event)" class="dropzone">
+    <p>
+      DROP ZONE !!
+    </p>
+  </div>
+</div>
+ -->
+
+
+
+
+
+<div class="container" appDnd (fileDropped)="onFileDropped($event)">
+  <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+  <img src="assets/img/dnd/ic-upload-file.svg" alt="">
+  <h3>ลากวางไฟล์ที่นี่</h3>
+  <h3>หรือ</h3>
+  <label for="fileDropRef">คลิกอัพโหลดไฟล์แนบ</label>
+</div>
+
+<div class="files-list">
+  <div class="single-file" *ngFor="let file of files; let i = index">
+    <img *ngIf="file.type === 'application/pdf'" src="https://image.flaticon.com/icons/svg/337/337946.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'application/doc'" src="https://image.flaticon.com/icons/svg/337/337932.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'application/zip'" src="https://image.flaticon.com/icons/svg/337/337960.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'image/jpeg'" src="https://image.flaticon.com/icons/svg/337/337940.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+      src="https://image.flaticon.com/icons/svg/337/337958.svg" width="45px" alt="file">
+    <img *ngIf="file.type === 'application/vnd.ms-excel'" src="https://image.flaticon.com/icons/svg/337/337958.svg"
+      width="45px" alt="file">
+    <div class="info">
+      <h4 class="name">
+        {{ file?.name }}
+      </h4>
+      <p class="size">
+        {{ formatBytes(file?.size) }}
+      </p>
+
+    </div>
+    <img src="assets/images/drag-file/delete.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">
+  </div>
+</div>

@@ -6,32 +6,18 @@
   <!-- CENTER -->
   <div class="center">
     <!-- HEADER -->
-    <div
-      class="header accent"
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-    >
+    <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
       <!-- APP TITLE -->
       <div fxLayout="row" fxLayoutAlign="start center">
         <button class="mat-icon-button mr-0 mr-sm-16" (click)="goDetail()">
           <mat-icon>arrow_back</mat-icon>
         </button>
 
-        <div
-          class="logo mb-24 mb-md-0"
-          fxLayout="row"
-          fxLayoutAlign="start center"
-        >
-          <mat-icon
-            class="logo-icon s-32 mr-16"
-            [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }"
-          >
+        <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="logo-icon s-32 mr-16" [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }">
             edit
           </mat-icon>
-          <span
-            class="logo-text h1"
-            [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
-          >
+          <span class="logo-text h1" [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }">
             บันทึกคำของบประมาณ
           </span>
         </div>
@@ -46,33 +32,20 @@
       <div class="content">
         <mat-tab-group fxFlex>
           <mat-tab label="ข้อมูลเสนอโครงการ">
-            <form [formGroup]="selectForm" class="mt-20" >
+            <form [formGroup]="selectForm" class="mt-20">
               <div fxLayout="row">
-                <div
-                  fxFlex="100"
-                  fxFlex.gt-sm="50"
-                  class="pl-20  pr-16"
-                  fxLayoutAlign="center"
-                >
+                <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
                   <mat-form-field appearance="outline" fxFlex>
                     <mat-label>หน่วยงาน</mat-label>
                     <mat-select formControlName="department" name="department">
                       <mat-option>--</mat-option>
-                      <mat-option
-                        *ngFor="let item of department"
-                        [value]="item"
-                      >
+                      <mat-option *ngFor="let item of department" [value]="item">
                         {{ item.name }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
-                <div
-                  fxFlex="100"
-                  fxFlex.gt-sm="50"
-                  class="pl-20  pr-16"
-                  fxLayoutAlign="center"
-                >
+                <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
                   <mat-form-field appearance="outline" fxFlex>
                     <mat-label>กลุ่ม/ฝ่าย</mat-label>
                     <mat-select formControlName="group" name="group">
@@ -134,63 +107,28 @@
               </div>
 
               <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-                <mat-form-field
-                  class="example-full-width"
-                  appearance="outline"
-                  fxFlex
-                >
+                <mat-form-field class="example-full-width" appearance="outline" fxFlex>
                   <mat-label>รายการ</mat-label>
-                  <textarea
-                    matInput
-                    formControlName="list"
-                    name="list"
-                    placeholder="Ex. It makes me feel..."
-                  ></textarea>
+                  <textarea matInput formControlName="list" name="list"
+                    placeholder="Ex. It makes me feel..."></textarea>
                 </mat-form-field>
               </div>
 
               <div fxLayout="row">
-                <div
-                  fxFlex="100"
-                  fxFlex.gt-sm="50"
-                  class="pl-20  pr-16"
-                  fxLayoutAlign="space-between center"
-                >
-                  <mat-radio-group
-                    aria-labelledby="example-radio-group-label"
-                    class="example-radio-group"
-                    formControlName="projecttypes"
-                    name="projecttypes"
-                  >
-                    <mat-radio-button
-                      fxLayout="row"
-                      fxLayoutAlign="space-between center"
-                      class="example-radio-button"
-                      *ngFor="let item of projecttypes"
-                      [value]="item"
-                    >
+                <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="space-between center">
+                  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                    formControlName="projecttypes" name="projecttypes">
+                    <mat-radio-button fxLayout="row" fxLayoutAlign="space-between center" class="example-radio-button"
+                      *ngFor="let item of projecttypes" [value]="item">
                       {{ item }}
                     </mat-radio-button>
                   </mat-radio-group>
                 </div>
 
-                <div
-                  fxFlex="100"
-                  fxFlex.gt-sm="50"
-                  class="pl-20  pr-16"
-                  fxLayoutAlign="center"
-                >
-                  <mat-form-field
-                    class="example-full-width"
-                    appearance="outline"
-                    fxFlex
-                  >
+                <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+                  <mat-form-field class="example-full-width" appearance="outline" fxFlex>
                     <mat-label>เงินงบประมาณรวม</mat-label>
-                    <input
-                      matInput
-                      formControlName="totalbudget"
-                      name="totalbudget"
-                    />
+                    <input matInput formControlName="totalbudget" name="totalbudget" />
                   </mat-form-field>
                 </div>
               </div>
@@ -200,7 +138,7 @@
 
           </mat-tab>
           <mat-tab label="ข้อมูลเอกสารเสนอขอ">
-
+           <app-facesheet></app-facesheet>
           </mat-tab>
         </mat-tab-group>
         <!--  -->
