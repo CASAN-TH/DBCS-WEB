@@ -62,6 +62,10 @@ export class ProposalListComponent implements OnInit {
     this.router.navigateByUrl("/proposal/proposalForm/new");
   }
 
+  editProposalBack(ev){
+    console.log(ev)
+  }
+
   updateFilter(event) {
     //change search keyword to lower case
     // const val = event.target.value.toLowerCase();
