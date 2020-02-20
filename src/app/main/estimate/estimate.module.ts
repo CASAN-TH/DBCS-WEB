@@ -9,6 +9,7 @@ import { EstimatesComponent } from "./estimates/estimates.component";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FacesheetComponent } from './components/facesheet/facesheet.component';
+import { BudgetPlanComponent } from './components/budget-plan/budget-plan.component';
 
 
 const routes = [
@@ -25,7 +26,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent],
+  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent, BudgetPlanComponent],
   imports: [
     RouterModule.forChild(routes),
 
