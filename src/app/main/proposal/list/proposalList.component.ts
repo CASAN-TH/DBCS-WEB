@@ -62,7 +62,7 @@ export class ProposalListComponent implements OnInit {
     this.router.navigateByUrl("/proposal/proposalForm/new");
   }
 
-  editProposalBack(ev){
+  editProposal(ev){
     console.log(ev)
   }
 
