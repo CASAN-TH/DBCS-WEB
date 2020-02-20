@@ -12,7 +12,7 @@
       fxLayoutAlign="space-between center"
     >
       <!-- APP TITLE -->
-      <div fxLayout="row" fxLayoutAlign="start center">
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
         <button class="mat-icon-button mr-0 mr-sm-16" (click)="goBack()">
           <mat-icon>arrow_back</mat-icon>
         </button>
@@ -20,6 +20,8 @@
         <div
           class="logo mb-24 mb-md-0"
           fxLayout="row"
+          fxFlex="100"
+          fxFlex.gt-sm="60"
           fxLayoutAlign="start center"
         >
           <mat-icon
@@ -32,13 +34,17 @@
             class="logo-text h1"
             [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
           >
-          PROPOSALForm
+          ขอตั้งงบประมาณรายจ่ายประจำปี
           </span>
+          
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="40" class="pl-20  pr-16" fxLayoutAlign="end">
+          <button (click)="onSave()">
+            บันทึกข้อมูล
+          </button>
         </div>
 
-        <button class="mat-icon-button mr-0 mr-sm-16" (click)="onSave()">
-          <mat-icon>save</mat-icon>
-        </button>
+        
       </div>
       <!-- / APP TITLE -->
     </div>
@@ -49,10 +55,12 @@
       <!-- CONTENT -->
       <div class="content">
         <mat-tab-group fxFlex>
-          <mat-tab label="PROPOSAL">
-           <app-form001 [proposalForm]="proposalForm" [lovData]="lovData"></app-form001>
+          <mat-tab label="แบบฟอร์มข้อเสนอโครงการ (กผง001)">
+           <app-form001 class="pt-2"  [proposalForm]="proposalForm" [lovData]="lovData"></app-form001>
           </mat-tab>
-          
+          <mat-tab label="แผนการดำเนินโครงการและแผนการใช้จ่ายเงินงบประมาณ (กผง002)" >
+
+          </mat-tab>
         </mat-tab-group>
         <!--  -->
       </div>

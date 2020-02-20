@@ -12,6 +12,8 @@ import { PropListComponent } from './components/prop-list/prop-list.component';
 import { Form001Component } from './components/form001/form001.component';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { ProjectPipe } from './pipes/project.pipe';
+import { NgxDatatableModule } from "@swimlane/ngx-datatable"
+
 
 const routes = [
   {
@@ -61,7 +63,8 @@ const routes = [
     RichTextEditorAllModule,
 
     TranslateModule,
-    FuseSharedModule
+    FuseSharedModule,
+    NgxDatatableModule
   ],
   exports: [
     ProposalListComponent,
