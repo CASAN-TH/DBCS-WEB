@@ -8,6 +8,8 @@ import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { MatIconModule, MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropListComponent } from './components/prop-list/prop-list.component';
+import { NgxDatatableModule } from "@swimlane/ngx-datatable"
+
 
 const routes = [
   {
@@ -49,7 +51,8 @@ const routes = [
     MatButtonModule,
 
     TranslateModule,
-    FuseSharedModule
+    FuseSharedModule,
+    NgxDatatableModule
   ],
   exports: [
     ProposalListComponent,

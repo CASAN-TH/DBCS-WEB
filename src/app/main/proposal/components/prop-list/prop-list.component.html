@@ -1,3 +1,57 @@
-<p>
-  prop-list works!
-</p>
+<div class="content-card">
+  <div class="content">
+    <ngx-datatable #table class="material fullscreen" [columnMode]="'flex'" [headerHeight]="64" [footerHeight]="64"
+      rowHeight="auto" [limit]="10" [rows]="rows">
+      <ngx-datatable-column name="รหัสโครงการ" [flexGrow]="2">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.prop_id }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="ชื่อโครงการ" [flexGrow]="2">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.prop_name }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="กิจกรรมหลัก" [flexGrow]="2">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.main_activity }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="ปีเริ่มต้น" [flexGrow]="2">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.startdate }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="ปีสิ้นสุด" [flexGrow]="2">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.enddate }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="ผู้รับผิดชอบ" [flexGrow]="2">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.responsible_person }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="สถานะ" [flexGrow]="1.5">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.prop_status }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column [flexGrow]="0.6">
+        <ng-template ngx-datatable-cell-template>
+          <button class="mat-icon-button" aria-label="More" [matMenuTriggerFor]="moreMenu"
+            (click)="$event.stopPropagation()">
+            <mat-icon class="secondary-text">more_vert</mat-icon>
+          </button>
+
+          <mat-menu #moreMenu>
+            <button mat-menu-item aria-label="remove" (click)="deleteContact(contact)">
+              <mat-icon>edit</mat-icon>
+              <span>edit</span>
+            </button>
+          </mat-menu>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
