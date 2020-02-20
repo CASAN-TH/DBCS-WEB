@@ -133,7 +133,7 @@
     </mat-form-field>
   </div> -->
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+  <!-- <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>ผู้รับผิดชอบ</mat-label>
       <mat-select formControlName="selects" name="selects">
@@ -143,10 +143,21 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-  </div>
+  </div> -->
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ผู้รับผิดชอบ
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="owner" name="owner"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           หลักการและเหตุผล
@@ -157,7 +168,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           วัตถุประสงค์
@@ -168,7 +179,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           ความสอดคล้องกับกลยุทธศาสตร์(5)
@@ -179,7 +190,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           ความสอดคล้องกับกลยุทธศาสตร์(6)
@@ -190,7 +201,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           พื้นที่ดำเนินโครงการ
@@ -201,7 +212,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           กลุ่มเป้าหมาย
@@ -212,7 +223,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           ระยะเวลาดำเนินโครงการ(9)
@@ -223,7 +234,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           แผนการปฏิบัติงาน(10)
@@ -234,7 +245,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลการดำเนินงานที่ผ่านมา (ถ้ามี)
@@ -245,7 +256,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           งบประมาณและแผนการใช้จ่ายงบประมาณ (12)
@@ -256,7 +267,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลผลิต (13)
@@ -267,7 +278,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลลัพธ์ (14)
@@ -278,7 +289,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลที่คาดว่าจะได้รับ
@@ -289,7 +300,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel class="margin-form">
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           การติดตามและประเมินผลโครงการ
@@ -300,11 +311,11 @@
   </mat-accordion>
 </form>
 
-<div fxLayout="row">
+<!-- <div fxLayout="row">
   <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
     <button mat-raised-button color="primary" (click)="onclose()">ยกเลิก</button>
   </div>
   <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
     <button mat-raised-button color="primary" (click)="onsubmit()">บันทึก</button>
   </div>
-</div>
+</div> -->

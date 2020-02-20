@@ -112,11 +112,11 @@ export class EstimateComponent implements OnInit {
   //   console.log(this.selectForm.value);
   // }
 
-  onsubmit(proposalData) {
-    console.log(proposalData);
-  }
-  onclose() {
-    console.log("ยกเลิก");
-  }
+  // onsubmit(proposalData) {
+  //   console.log(proposalData);
+  // }
+  // onclose() {
+  //   console.log("ยกเลิก");
+  // }
 
 }

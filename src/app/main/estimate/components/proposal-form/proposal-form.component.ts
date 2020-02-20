@@ -8,7 +8,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class ProposalFormComponent implements OnInit {
 
-  @Output() submitClick = new EventEmitter();
+  // @Output() submitClick = new EventEmitter();
 
   proposalForm: FormGroup
   proposalData: any = [];
@@ -85,12 +85,12 @@ export class ProposalFormComponent implements OnInit {
     });
   }
 
-  onsubmit() {
-    // console.log(this.proposalForm.value);
-    this.submitClick.emit(this.proposalForm.value);
-  }
-  onclose() {
-    console.log("ยกเลิก");
-  }
+  // onsubmit() {
+  //   // console.log(this.proposalForm.value);
+  //   this.submitClick.emit(this.proposalForm.value);
+  // }
+  // onclose() {
+  //   console.log("ยกเลิก");
+  // }
 
 }
