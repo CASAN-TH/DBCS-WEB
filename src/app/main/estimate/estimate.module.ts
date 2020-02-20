@@ -10,6 +10,13 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FacesheetComponent } from './components/facesheet/facesheet.component';
 import { BudgetPlanComponent } from './components/budget-plan/budget-plan.component';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {ResizableModule} from "angular-resizable-element";
+
+
+
 
 
 const routes = [
@@ -40,6 +47,12 @@ const routes = [
     MatTableModule,
     MatRadioModule,
     MatTabsModule,
+
+    MatTreeModule,
+    MatSliderModule,
+    MatToolbarModule,
+    ResizableModule,
+    
 
     MatIconModule,
     MatInputModule,
