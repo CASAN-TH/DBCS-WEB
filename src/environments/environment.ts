@@ -6,7 +6,7 @@ export const environment = {
     production: false,
     hmr       : false,
     appName : 'DBCS-dev',
-    apiUrl : 'http://'
+    apiUrl : 'https://casan-sevice.lamunphan.com'
 };
 
 /*

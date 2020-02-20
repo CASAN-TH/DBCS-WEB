@@ -1,3 +1,31 @@
-<p>
-  facesheet works!
-</p>
+
+<div fxLayout="row wrap" class="containerfile">
+  <div fxFlex="20" fxLayoutAlign="center" class="single-file" *ngFor="let file of files; let i = index">
+    <img *ngIf="file.type === 'application/pdf'" src="https://image.flaticon.com/icons/svg/337/337946.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'application/doc'" src="https://image.flaticon.com/icons/svg/337/337932.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'application/zip'" src="https://image.flaticon.com/icons/svg/337/337960.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'image/jpeg'" src="https://image.flaticon.com/icons/svg/337/337940.svg" width="45px"
+      alt="file">
+    <img *ngIf="file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+      src="https://image.flaticon.com/icons/svg/337/337958.svg" width="45px" alt="file">
+    <img *ngIf="file.type === 'application/vnd.ms-excel'" src="https://image.flaticon.com/icons/svg/337/337958.svg"
+      width="45px" alt="file">
+    <h4 class="text-container">
+      {{ file.name }}
+    </h4>
+    <div>
+      <img src="https://image.flaticon.com/icons/svg/753/753345.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">
+    </div>
+  </div>
+
+</div>
+<div class="container" appDnd (fileDropped)="onFileDropped($event)">
+  <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)" />
+  <img class="imguplode" src="https://image.flaticon.com/icons/svg/25/25635.svg">
+  <h3>ลากวางไฟล์ที่นี่</h3>
+  <h3>หรือ</h3>
+  <label for="fileDropRef">คลิกอัพโหลดเพื่อแนบไฟล์</label>
+</div>

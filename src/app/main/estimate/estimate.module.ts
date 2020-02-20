@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import { FuseSharedModule } from "@fuse/shared.module";
 import { AuthenGuardService } from "app/authentication/authen-guard.service";
-import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
+import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule, MatExpansionModule } from "@angular/material";
 import { EstimatesComponent } from "./estimates/estimates.component";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +17,9 @@ import {ResizableModule} from "angular-resizable-element";
 
 
 
+import { ProposalFormComponent } from './components/proposal-form/proposal-form.component';
 
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 
 const routes = [
   {
@@ -33,7 +35,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent, BudgetPlanComponent],
+  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent, BudgetPlanComponent, ProposalFormComponent],
   imports: [
     RouterModule.forChild(routes),
 
@@ -60,12 +62,15 @@ const routes = [
     MatMenuModule,
     MatButtonModule,
 
+     MatExpansionModule,
+    RichTextEditorAllModule,
+
     NgxDatatableModule,
 
     TranslateModule,
 
     FuseSharedModule
   ],
-  exports: [EstimateComponent]
+  exports: [EstimateComponent, ProposalFormComponent]
 })
 export class EstimateModule {}
