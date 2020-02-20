@@ -7,17 +7,20 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProposalService } from './services/proposal.service';
 
 const routes = [
   {
     path: "proposalForm/:id",
-    component: ProposalFormComponent
-    // canActivate: [AuthenGuardService]
+    component: ProposalFormComponent,
+    canActivate: [AuthenGuardService],
+    resolve: [ProposalService]
   },
   {
       path     : '**',
       component: ProposalListComponent,
-      // canActivate: [AuthenGuardService]
+      canActivate: [AuthenGuardService],
+      resolve: [ProposalService]
   }
 ];
 
