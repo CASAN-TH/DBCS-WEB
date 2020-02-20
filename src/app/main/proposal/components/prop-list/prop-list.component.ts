@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 
 @Component({
@@ -9,9 +9,17 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 export class PropListComponent implements OnInit {
 
   @Input() rows: Array<any> = [];
+  @Output() editProposalBack: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  editProposal(type, index) {
+    this.editProposalBack.emit({
+      "type": type,
+      "data": this.rows[index]
+    });
   }
 
 }

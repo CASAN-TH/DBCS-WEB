@@ -4,7 +4,7 @@ import { fuseAnimations } from '@fuse/animations';
 
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ProposalService } from '../services/proposal.service';
 
@@ -24,42 +24,26 @@ export class ProposalListComponent implements OnInit {
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private router: Router,
+    private route: ActivatedRoute,
     private propService: ProposalService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
-
-    this.propService.onPropListDataChanged.subscribe(res => {
-      this.rows = res;
-    })
-
-    // this.fetch(data => {
-    //   // cache our list
-    //   this.temp = data;
-
-    //   // push our inital complete list
-    //   this.rows = data;
-    //   console.log(this.rows)
-    // });
   }
 
 
   ngOnInit(): void {
-
+    this.rows = this.route.snapshot.data.items.data;
   }
 
-  fetch(cb) {
-    const req = new XMLHttpRequest();
-    req.open('GET', `../../../../assets/data/proposal-list.json`);
-
-    req.onload = () => {
-      cb(JSON.parse(req.response));
-    };
-
-    req.send();
-  }
+  
 
   clickAdd() {
     this.router.navigateByUrl("/proposal/proposalForm/new");
+  }
+
+  editProposalBack(ev){
+    console.log(ev.data._id);
+    this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
   }
 
   updateFilter(event) {

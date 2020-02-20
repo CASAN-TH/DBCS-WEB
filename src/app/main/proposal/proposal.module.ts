@@ -20,13 +20,13 @@ const routes = [
     path: "proposalForm/:id",
     component: ProposalFormComponent,
     canActivate: [AuthenGuardService],
-    resolve: [ProposalService]
+    resolve: {item : ProposalService}
   },
   {
       path     : '**',
       component: ProposalListComponent,
       canActivate: [AuthenGuardService],
-      resolve: [ProposalService]
+      resolve: {items : ProposalService}
   }
 ];
 
