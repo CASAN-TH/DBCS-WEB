@@ -1,0 +1,321 @@
+<!-- <p>
+  proposal-form works!
+</p> -->
+<form [formGroup]="proposalForm">
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+      <mat-label>เลือกโครงการ</mat-label>
+      <textarea matInput formControlName="description" name="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+      <mat-label>แผนงาน</mat-label>
+      <mat-select formControlName="selects" name="selects">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of selects" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+      <mat-label>ผลผลิต/โครงการ</mat-label>
+      <mat-select formControlName="selects" name="selects">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of selects" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+      <mat-label>กิจกรรม</mat-label>
+      <mat-select formControlName="selects" name="selects">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of selects" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+      <mat-label>แหล่งเงิน</mat-label>
+      <mat-select formControlName="selects" name="selects">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of selects" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+        <mat-label>ปีเริ่มต้น</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+        <mat-label>ปีสิ้นสุด</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <div class="example-full-width">
+        งบประมาณปี
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+        <mat-label></mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <div class="example-full-width">
+        งบประมาณปี
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+        <mat-label></mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <div class="example-full-width">
+        งบประมาณปี
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+        <mat-label></mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <div class="example-full-width">
+        งบประมาณรวม
+      </div>
+    </div>
+    <div fxFlex="100" fxFlex.gt-sm="50" class="pl-20  pr-16" fxLayoutAlign="center">
+      <div class="example-full-width">
+        xxxxx
+      </div>
+    </div>
+  </div>
+
+  <!-- <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+      <mat-label>ผู้รับผิดชอบ</mat-label>
+      <textarea matInput formControlName="owner" name="owner"></textarea>
+    </mat-form-field>
+  </div> -->
+
+  <!-- <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
+      <mat-label>ผู้รับผิดชอบ</mat-label>
+      <mat-select formControlName="selects" name="selects">
+        <mat-option>--</mat-option>
+        <mat-option *ngFor="let item of selects" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ผู้รับผิดชอบ
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="owner" name="owner"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          หลักการและเหตุผล
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="criteria" name="criteria"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          วัตถุประสงค์
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="objectives" name="objectives"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ความสอดคล้องกับกลยุทธศาสตร์(5)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="relatetostrategy1" name="relatetostrategy1"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ความสอดคล้องกับกลยุทธศาสตร์(6)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="relatetostrategy2" name="relatetostrategy2"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          พื้นที่ดำเนินโครงการ
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="location" name="location"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          กลุ่มเป้าหมาย
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="targetgroup" name="targetgroup"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ระยะเวลาดำเนินโครงการ(9)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="timeline" name="timeline"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          แผนการปฏิบัติงาน(10)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="process" name="process"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ผลการดำเนินงานที่ผ่านมา (ถ้ามี)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="resulthistory" name="resulthistory"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          งบประมาณและแผนการใช้จ่ายงบประมาณ (12)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="budgetpaln" name="budgetpaln"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ผลผลิต (13)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="output" name="output"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ผลลัพธ์ (14)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="outcome" name="outcome"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ผลที่คาดว่าจะได้รับ
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="benefit" name="benefit"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          การติดตามและประเมินผลโครงการ
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ejs-richtexteditor formControlName="indicator" name="indicator"></ejs-richtexteditor>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
+
+<!-- <div fxLayout="row">
+  <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+    <button mat-raised-button color="primary" (click)="onclose()">ยกเลิก</button>
+  </div>
+  <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+    <button mat-raised-button color="primary" (click)="onsubmit()">บันทึก</button>
+  </div>
+</div> -->
