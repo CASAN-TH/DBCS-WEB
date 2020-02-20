@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 import { FuseSharedModule } from "@fuse/shared.module";
 import { AuthenGuardService } from "app/authentication/authen-guard.service";
-import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule } from "@angular/material";
+import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
 import { EstimatesComponent } from "./estimates/estimates.component";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable"
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +37,7 @@ const routes = [
     MatFormFieldModule,
     MatTableModule,
     MatRadioModule,
+    MatTabsModule,
 
     MatIconModule,
     MatInputModule,

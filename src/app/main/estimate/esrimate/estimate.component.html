@@ -43,154 +43,163 @@
     <!-- CONTENT CARD -->
     <div class="content-card">
       <!-- CONTENT -->
-      <div class="content" fusePerfectScrollbar>
-        <form [formGroup]="selectForm" class="mt-20">
-          <div fxLayout="row">
-            <div
-              fxFlex="100"
-              fxFlex.gt-sm="50"
-              class="pl-20  pr-16"
-              fxLayoutAlign="center"
-            >
-              <mat-form-field appearance="outline" fxFlex>
-                <mat-label>หน่วยงาน</mat-label>
-                <mat-select formControlName="department" name="department">
-                  <mat-option>--</mat-option>
-                  <mat-option *ngFor="let item of department" [value]="item">
-                    {{ item.name }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div
-              fxFlex="100"
-              fxFlex.gt-sm="50"
-              class="pl-20  pr-16"
-              fxLayoutAlign="center"
-            >
-              <mat-form-field appearance="outline" fxFlex>
-                <mat-label>กลุ่ม/ฝ่าย</mat-label>
-                <mat-select formControlName="group" name="group">
-                  <mat-option>--</mat-option>
-                  <mat-option *ngFor="let item of group" [value]="item">
-                    {{ item.name }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-            <mat-form-field appearance="outline" fxFlex>
-              <mat-label>แผนงาน</mat-label>
-              <mat-select formControlName="plan" name="plan">
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let item of plan" [value]="item">
-                  {{ item.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-            <mat-form-field appearance="outline" fxFlex>
-              <mat-label>ผลผลิต/โครงการ</mat-label>
-              <mat-select formControlName="product" name="product">
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let item of product" [value]="item">
-                  {{ item.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-            <mat-form-field appearance="outline" fxFlex>
-              <mat-label>กิจกรรม</mat-label>
-              <mat-select formControlName="activities" name="activities">
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let item of activities" [value]="item">
-                  {{ item.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-            <mat-form-field appearance="outline" fxFlex>
-              <mat-label>ประเภทรายจ่าย</mat-label>
-              <mat-select formControlName="expense" name="expense">
-                <mat-option>--</mat-option>
-                <mat-option *ngFor="let item of expense" [value]="item">
-                  {{ item.name }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-            <mat-form-field
-              class="example-full-width"
-              appearance="outline"
-              fxFlex
-            >
-              <mat-label>รายการ</mat-label>
-              <textarea
-                matInput
-                formControlName="list"
-                name="list"
-                placeholder="Ex. It makes me feel..."
-              ></textarea>
-            </mat-form-field>
-          </div>
-
-          <div fxLayout="row">
-            <div
-              fxFlex="100"
-              fxFlex.gt-sm="50"
-              class="pl-20  pr-16"
-              fxLayoutAlign="space-between center"
-            >
-              <mat-radio-group
-                aria-labelledby="example-radio-group-label"
-                class="example-radio-group"
-                formControlName="projecttypes"
-                name="projecttypes"
-              >
-                <mat-radio-button
-                fxLayout="row"
-                fxLayoutAlign="space-between center"
-                  class="example-radio-button"
-                  *ngFor="let item of projecttypes"
-                  [value]="item"
+      <div class="content">
+        <mat-tab-group fxFlex>
+          <mat-tab label="ข้อมูลเสนอโครงการ">
+            <form [formGroup]="selectForm" class="mt-20" >
+              <div fxLayout="row">
+                <div
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pl-20  pr-16"
+                  fxLayoutAlign="center"
                 >
-                  {{ item }}
-                </mat-radio-button>
-              </mat-radio-group>
-            </div>
+                  <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>หน่วยงาน</mat-label>
+                    <mat-select formControlName="department" name="department">
+                      <mat-option>--</mat-option>
+                      <mat-option
+                        *ngFor="let item of department"
+                        [value]="item"
+                      >
+                        {{ item.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pl-20  pr-16"
+                  fxLayoutAlign="center"
+                >
+                  <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>กลุ่ม/ฝ่าย</mat-label>
+                    <mat-select formControlName="group" name="group">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let item of group" [value]="item">
+                        {{ item.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
 
-            <div
-              fxFlex="100"
-              fxFlex.gt-sm="50"
-              class="pl-20  pr-16"
-              fxLayoutAlign="center"
-            >
-              <mat-form-field
-                class="example-full-width"
-                appearance="outline"
-                fxFlex
-              >
-                <mat-label>เงินงบประมาณรวม</mat-label>
-                <input
-                  matInput
-                  formControlName="totalbudget"
-                  name="totalbudget"
-                />
-              </mat-form-field>
-            </div>
-          </div>
-        </form>
+              <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>แผนงาน</mat-label>
+                  <mat-select formControlName="plan" name="plan">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let item of plan" [value]="item">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>ผลผลิต/โครงการ</mat-label>
+                  <mat-select formControlName="product" name="product">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let item of product" [value]="item">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>กิจกรรม</mat-label>
+                  <mat-select formControlName="activities" name="activities">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let item of activities" [value]="item">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+                <mat-form-field appearance="outline" fxFlex>
+                  <mat-label>ประเภทรายจ่าย</mat-label>
+                  <mat-select formControlName="expense" name="expense">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let item of expense" [value]="item">
+                      {{ item.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+                <mat-form-field
+                  class="example-full-width"
+                  appearance="outline"
+                  fxFlex
+                >
+                  <mat-label>รายการ</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="list"
+                    name="list"
+                    placeholder="Ex. It makes me feel..."
+                  ></textarea>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row">
+                <div
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pl-20  pr-16"
+                  fxLayoutAlign="space-between center"
+                >
+                  <mat-radio-group
+                    aria-labelledby="example-radio-group-label"
+                    class="example-radio-group"
+                    formControlName="projecttypes"
+                    name="projecttypes"
+                  >
+                    <mat-radio-button
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                      class="example-radio-button"
+                      *ngFor="let item of projecttypes"
+                      [value]="item"
+                    >
+                      {{ item }}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+
+                <div
+                  fxFlex="100"
+                  fxFlex.gt-sm="50"
+                  class="pl-20  pr-16"
+                  fxLayoutAlign="center"
+                >
+                  <mat-form-field
+                    class="example-full-width"
+                    appearance="outline"
+                    fxFlex
+                  >
+                    <mat-label>เงินงบประมาณรวม</mat-label>
+                    <input
+                      matInput
+                      formControlName="totalbudget"
+                      name="totalbudget"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+        <!--  -->
       </div>
+      <!-- /CONTENT -->
     </div>
     <!-- /CONTENT CARD -->
   </div>

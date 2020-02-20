@@ -7,7 +7,7 @@
     overflow: hidden;
     background: #fff;
     overflow: hidden;
-    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     @include mat-elevation(1);
 
     @include media-breakpoint("xs") {
@@ -21,7 +21,7 @@
       padding: 0 18px;
 
       .mat-icon {
-        color: rgba(0,0,0,.54);
+        color: rgba(0, 0, 0, 0.54);
       }
 
       input {
@@ -47,21 +47,25 @@
 }
 
 #add-button {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    padding: 0;
-    z-index: 99;
-  
-    @include media-breakpoint("xs") {
-      position: sticky;
-      top: calc(100vh - 120px);
-      bottom: auto;
-    }
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 0;
+  z-index: 99;
 
-    @include media-breakpoint("s") {
-        position: sticky;
-        top: calc(100vh - 70px);
-        bottom: auto;
-      }
+  @include media-breakpoint("xs") {
+    position: sticky;
+    top: calc(100vh - 120px);
+    bottom: auto;
   }
+
+  @include media-breakpoint("s") {
+    position: sticky;
+    top: calc(100vh - 70px);
+    bottom: auto;
+  }
+}
+
+.content .mat-tab-label {
+  height: 64px;
+}
