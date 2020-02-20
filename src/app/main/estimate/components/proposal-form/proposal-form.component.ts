@@ -13,7 +13,7 @@ export class ProposalFormComponent implements OnInit {
   @Input() product: any;
   @Input() activity: any;
   @Input() moneysource: any;
-  // proposalData: any = [];
+  // proposalData: any = {};
 
   // selects: any;
 
