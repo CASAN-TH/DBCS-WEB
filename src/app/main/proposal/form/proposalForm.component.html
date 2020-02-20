@@ -35,6 +35,10 @@
           PROPOSALForm
           </span>
         </div>
+
+        <button class="mat-icon-button mr-0 mr-sm-16" (click)="onSave()">
+          <mat-icon>save</mat-icon>
+        </button>
       </div>
       <!-- / APP TITLE -->
     </div>
@@ -46,7 +50,7 @@
       <div class="content">
         <mat-tab-group fxFlex>
           <mat-tab label="PROPOSAL">
-            <h2>{{'PROPOSAL.HELLO' | translate}}</h2>
+           <app-form001 [proposalForm]="proposalForm" [lovData]="lovData"></app-form001>
           </mat-tab>
           
         </mat-tab-group>
