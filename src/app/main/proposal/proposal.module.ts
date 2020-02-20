@@ -5,8 +5,9 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
-import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
+import { MatIconModule, MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PropListComponent } from './components/prop-list/prop-list.component';
 
 const routes = [
   {
@@ -15,16 +16,17 @@ const routes = [
     // canActivate: [AuthenGuardService]
   },
   {
-      path     : '**',
-      component: ProposalListComponent,
-      // canActivate: [AuthenGuardService]
+    path: '**',
+    component: ProposalListComponent,
+    // canActivate: [AuthenGuardService]
   }
 ];
 
 @NgModule({
   declarations: [
-    ProposalListComponent, 
-    ProposalFormComponent
+    ProposalListComponent,
+    ProposalFormComponent,
+    PropListComponent
   ],
   imports: [
     RouterModule.forChild(routes),
