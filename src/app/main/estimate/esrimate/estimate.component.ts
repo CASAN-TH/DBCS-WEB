@@ -11,9 +11,36 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   templateUrl: './estimate.component.html',
   styleUrls: ['./estimate.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations   : fuseAnimations
+  animations: fuseAnimations
 })
 export class EstimateComponent implements OnInit {
+
+  proposalForm: FormGroup;
+  proposalData: any = {};
+
+  plan: any[] = [
+    { name: "แผนมาสาย" },
+    { name: "แผนวางระเบิด" },
+    { name: "แผนสุ้มยิง" },
+    { name: "แผนว่ายน้ำ" }
+  ]
+  product: any[] = [
+    { name: "ดีมาก" },
+    { name: "ดี" },
+    { name: "ปานกลาง" },
+    { name: "น้อย" }
+  ]
+  activity: any[] = [
+    { name: "สำรวจดูพื้นที่" },
+    { name: "วางแผน" },
+    { name: "ประชุมโครงการ" },
+    { name: "ตรวจสอบโครงการ" }
+  ]
+  moneysource: any[] = [
+    { name: "เงินบุคลากร" },
+    { name: "เงินเบิกจ่าย" },
+    { name: "เงินอื่น ๆ" }
+  ]
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
@@ -25,98 +52,73 @@ export class EstimateComponent implements OnInit {
 
 
 
-  goDetail(){
+  goDetail() {
     this.location.back();
   }
 
-  // selectForm: FormGroup;
-  // selectData: any = [];
-
-  // projecttypes: string[] = ['โครงการใหม่', 'โครงการเดิม'];
-  
-  
   ngOnInit() {
 
-    // this.selectData = {
-    //   department: "",
-    //   group: "",
-    //   plan: "",
-    //   product: "",
-    //   activities: "",
-    //   expense: "",
-    //   list: "",
-    //   projecttypes: "",
-    //   totalbudget:""
-    // }
-    // this.selectForm = this.createSelectForm();
+    this.proposalData = {
+      "description": "",
+      "owner": "",
+      "criteria": "",
+      "objectives": "",
+      "relatetostrategy1": "",
+      "relatetostrategy2": "",
+      "location": "",
+      "targetgroup": "",
+      "timeline": "",
+      "process": "",
+      "resulthistory": "",
+      "budgetpaln": "",
+      "output": "",
+      "outcome": "",
+      "benefit": "",
+      "indicator": "",
+
+      "plan": "",
+      "product": "",
+      "activity": "",
+      "moneysource": ""
+    }
+
+    this.proposalForm = this.createForm();
+
   }
 
-  // createSelectForm(): FormGroup {
-  //   return this.formBuilder.group({
-  //     department: [this.selectData.department, Validators.required],
-  //     group: [this.selectData.group, Validators.required],
-  //     plan: [this.selectData.plan, Validators.required],
-  //     product: [this.selectData.product, Validators.required],
-  //     activities: [this.selectData.activities, Validators.required],
-  //     expense: [this.selectData.expense, Validators.required],
-  //     list: [this.selectData.list, Validators.required],
-  //     projecttypes: [this.selectData.projecttypes, Validators.required],
-  //     totalbudget: [this.selectData.totalbudget, Validators.required]
-  //   });
-  // }
 
-  // department: any[] = [
-  //   { name: 'หน่วยงานรัฐ', sound: 'หน่วยงาน!' },
-  //   { name: 'หน่วยงานภาครัฐ', sound: 'หน่วยงาน!' },
-  //   { name: 'หน่วยงานรัฐวิสาหกิจ', sound: 'หน่วยงาน!' },
-  //   { name: 'หน่วยงานเอกชน', sound: 'หน่วยงาน!' },
-  // ];
+  createForm(): FormGroup {
+    return this.formBuilder.group({
+      description: [this.proposalData.description, Validators.required],
+      owner: [this.proposalData.owner, Validators.required],
+      criteria: [this.proposalData.criteria, Validators.required],
+      objectives: [this.proposalData.objectives, Validators.required],
+      relatetostrategy1: [this.proposalData.relatetostrategy1, Validators.required],
+      relatetostrategy2: [this.proposalData.relatetostrategy2, Validators.required],
+      location: [this.proposalData.location, Validators.required],
+      targetgroup: [this.proposalData.targetgroup, Validators.required],
+      timeline: [this.proposalData.timeline, Validators.required],
+      process: [this.proposalData.process, Validators.required],
+      resulthistory: [this.proposalData.resulthistory, Validators.required],
+      budgetpaln: [this.proposalData.budgetpaln, Validators.required],
+      output: [this.proposalData.output, Validators.required],
+      outcome: [this.proposalData.outcome, Validators.required],
+      benefit: [this.proposalData.benefit, Validators.required],
+      indicator: [this.proposalData.indicator, Validators.required],
 
-  // group: any[] = [
-  //   { name: 'หน่วยงานรัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานภาครัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานรัฐวิสาหกิจ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานเอกชน', sound: 'กลุ่ม/ฝ่าย!' },
-  // ];
+      plan: [this.proposalData.plan, Validators.required],
+      product: [this.proposalData.product, Validators.required],
+      activity: [this.proposalData.activity, Validators.required],
+      moneysource: [this.proposalData.moneysource, Validators.required]
+    });
+  }
 
-  // plan: any[] = [
-  //   { name: 'หน่วยงานรัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานภาครัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานรัฐวิสาหกิจ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานเอกชน', sound: 'กลุ่ม/ฝ่าย!' },
-  // ];
+  onsubmit() {
+    console.log(this.proposalForm.value);
+  }
 
-  // product: any[] = [
-  //   { name: 'หน่วยงานรัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานภาครัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานรัฐวิสาหกิจ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานเอกชน', sound: 'กลุ่ม/ฝ่าย!' },
-  // ];
-
-  // activities: any[] = [
-  //   { name: 'หน่วยงานรัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานภาครัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานรัฐวิสาหกิจ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานเอกชน', sound: 'กลุ่ม/ฝ่าย!' },
-  // ];
-
-  // expense: any[] = [
-  //   { name: 'หน่วยงานรัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานภาครัฐ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานรัฐวิสาหกิจ', sound: 'กลุ่ม/ฝ่าย!' },
-  //   { name: 'หน่วยงานเอกชน', sound: 'กลุ่ม/ฝ่าย!' },
-  // ];
-
-
-  // onsubmit() {
-  //   console.log(this.selectForm.value);
-  // }
-
-  // onsubmit(proposalData) {
-  //   console.log(proposalData);
-  // }
-  // onclose() {
-  //   console.log("ยกเลิก");
-  // }
+  onclose() {
+    console.log("ยกเลิก");
+  }
 
 }

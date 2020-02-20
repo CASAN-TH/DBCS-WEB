@@ -1,8 +1,5 @@
-<!-- <p>
-  proposal-form works!
-</p> -->
 <form [formGroup]="proposalForm">
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
+  <div fxLayout="row" class="pl-20  pr-16 header-form" fxLayoutAlign="center">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>เลือกโครงการ</mat-label>
       <textarea matInput formControlName="description" name="description"></textarea>
@@ -12,9 +9,9 @@
   <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>แผนงาน</mat-label>
-      <mat-select formControlName="selects" name="selects">
+      <mat-select formControlName="plan" name="plan">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let item of selects" [value]="item">
+        <mat-option *ngFor="let item of plan" [value]="item">
           {{item.name}}
         </mat-option>
       </mat-select>
@@ -24,9 +21,9 @@
   <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>ผลผลิต/โครงการ</mat-label>
-      <mat-select formControlName="selects" name="selects">
+      <mat-select formControlName="product" name="product">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let item of selects" [value]="item">
+        <mat-option *ngFor="let item of product" [value]="item">
           {{item.name}}
         </mat-option>
       </mat-select>
@@ -36,9 +33,9 @@
   <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>กิจกรรม</mat-label>
-      <mat-select formControlName="selects" name="selects">
+      <mat-select formControlName="activity" name="activity">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let item of selects" [value]="item">
+        <mat-option *ngFor="let item of activity" [value]="item">
           {{item.name}}
         </mat-option>
       </mat-select>
@@ -48,9 +45,9 @@
   <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>แหล่งเงิน</mat-label>
-      <mat-select formControlName="selects" name="selects">
+      <mat-select formControlName="moneysource" name="moneysource">
         <mat-option>--</mat-option>
-        <mat-option *ngFor="let item of selects" [value]="item">
+        <mat-option *ngFor="let item of moneysource" [value]="item">
           {{item.name}}
         </mat-option>
       </mat-select>
@@ -126,27 +123,8 @@
     </div>
   </div>
 
-  <!-- <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
-      <mat-label>ผู้รับผิดชอบ</mat-label>
-      <textarea matInput formControlName="owner" name="owner"></textarea>
-    </mat-form-field>
-  </div> -->
-
-  <!-- <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
-    <mat-form-field class="example-full-width" appearance="outline" fxFlex>
-      <mat-label>ผู้รับผิดชอบ</mat-label>
-      <mat-select formControlName="selects" name="selects">
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let item of selects" [value]="item">
-          {{item.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div> -->
-
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form header-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผู้รับผิดชอบ
@@ -157,7 +135,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           หลักการและเหตุผล
@@ -168,7 +146,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           วัตถุประสงค์
@@ -179,7 +157,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ความสอดคล้องกับกลยุทธศาสตร์(5)
@@ -190,7 +168,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ความสอดคล้องกับกลยุทธศาสตร์(6)
@@ -201,7 +179,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           พื้นที่ดำเนินโครงการ
@@ -212,7 +190,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           กลุ่มเป้าหมาย
@@ -223,7 +201,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ระยะเวลาดำเนินโครงการ(9)
@@ -234,7 +212,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           แผนการปฏิบัติงาน(10)
@@ -245,7 +223,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลการดำเนินงานที่ผ่านมา (ถ้ามี)
@@ -256,7 +234,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           งบประมาณและแผนการใช้จ่ายงบประมาณ (12)
@@ -267,7 +245,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลผลิต (13)
@@ -278,7 +256,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลลัพธ์ (14)
@@ -289,7 +267,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           ผลที่คาดว่าจะได้รับ
@@ -300,7 +278,7 @@
   </mat-accordion>
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel class="margin-form">
       <mat-expansion-panel-header>
         <mat-panel-title>
           การติดตามและประเมินผลโครงการ
