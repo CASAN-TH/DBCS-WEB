@@ -6,32 +6,18 @@
   <!-- CENTER -->
   <div class="center">
     <!-- HEADER -->
-    <div
-      class="header accent"
-      fxLayout="row"
-      fxLayoutAlign="space-between center"
-    >
+    <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
       <!-- APP TITLE -->
       <div fxLayout="row" fxLayoutAlign="start center">
         <button class="mat-icon-button mr-0 mr-sm-16" (click)="goDetail()">
           <mat-icon>arrow_back</mat-icon>
         </button>
 
-        <div
-          class="logo mb-24 mb-md-0"
-          fxLayout="row"
-          fxLayoutAlign="start center"
-        >
-          <mat-icon
-            class="logo-icon s-32 mr-16"
-            [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }"
-          >
+        <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="logo-icon s-32 mr-16" [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }">
             edit
           </mat-icon>
-          <span
-            class="logo-text h1"
-            [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
-          >
+          <span class="logo-text h1" [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }">
             บันทึกคำของบประมาณ
           </span>
         </div>
@@ -46,7 +32,19 @@
       <div class="content">
         <mat-tab-group fxFlex>
           <mat-tab label="ข้อมูลเสนอโครงการ">
-            <app-proposal-form></app-proposal-form>
+
+            <app-proposal-form [proposalForm]="proposalForm" [plan]="plan" [product]="product" [activity]="activity"
+            [moneysource]="moneysource"></app-proposal-form>
+
+            <div fxLayout="row" class="margin-bottom" fxLayoutAlign="center">
+              <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+                <button mat-raised-button color="primary" (click)="onclose()">ยกเลิก</button>
+              </div>
+              <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
+                <button mat-raised-button color="primary" (click)="onsubmit()">บันทึก</button>
+              </div>
+            </div>
+
             <!-- <form [formGroup]="selectForm" class="mt-20" >
               <div fxLayout="row">
                 <div
