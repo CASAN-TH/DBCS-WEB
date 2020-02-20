@@ -76,7 +76,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'พิจารณาคำของบประมาณ',
                 type     : 'item',
                 icon     : 'email',
-                url      : '/sample10',
+                url      : '/proposal',
                 badge    : {
                     title    : '25',
                     translate: '3',
