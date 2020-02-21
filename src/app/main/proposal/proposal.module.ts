@@ -12,7 +12,8 @@ import { PropListComponent } from './components/prop-list/prop-list.component';
 import { Form001Component } from './components/form001/form001.component';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { ProjectPipe } from './pipes/project.pipe';
-import { NgxDatatableModule } from "@swimlane/ngx-datatable"
+import { NgxDatatableModule } from "@swimlane/ngx-datatable";
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 const routes = [
@@ -20,13 +21,13 @@ const routes = [
     path: "proposalForm/:id",
     component: ProposalFormComponent,
     canActivate: [AuthenGuardService],
-    resolve: {item : ProposalService}
+    resolve: { item: ProposalService }
   },
   {
-      path     : '**',
-      component: ProposalListComponent,
-      canActivate: [AuthenGuardService],
-      resolve: {items : ProposalService}
+    path: '**',
+    component: ProposalListComponent,
+    canActivate: [AuthenGuardService],
+    resolve: { items: ProposalService }
   }
 ];
 
@@ -59,8 +60,8 @@ const routes = [
     MatButtonModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
 
-    
     RichTextEditorAllModule,
 
     TranslateModule,

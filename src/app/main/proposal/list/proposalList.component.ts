@@ -1,3 +1,4 @@
+import { ModalComfirmComponent } from './../../../modals/modal-comfirm/modal-comfirm.component';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { fuseAnimations } from '@fuse/animations';
@@ -7,6 +8,8 @@ import { locale as thai } from '../i18n/th';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ProposalService } from '../services/proposal.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-proposal-list',
@@ -25,7 +28,9 @@ export class ProposalListComponent implements OnInit {
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private router: Router,
     private route: ActivatedRoute,
-    private propService: ProposalService
+    private propService: ProposalService,
+    private spinner: NgxSpinnerService,
+    public dialog: MatDialog
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -35,26 +40,37 @@ export class ProposalListComponent implements OnInit {
     this.rows = this.route.snapshot.data.items.data;
   }
 
-  
+
 
   clickAdd() {
     this.router.navigateByUrl("/proposal/proposalForm/new");
   }
 
-  editProposal(ev){
-    switch (ev.type){
+  editProposal(ev) {
+    switch (ev.type) {
       case "edit":
+        this.spinner.show();
         this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
         break;
       case "delete":
-        this.propService.deleteProposalData(ev.data).then((res)=>{
-          this.propService.getProposalDataList().subscribe((res:any)=>{
-            this.rows = res.data;
-          })
-        })
+        const dialogRef = this.dialog.open(ModalComfirmComponent, {
+          width: '400px',
+          data: { title: "ยืนยันการลบ", message: "กรุณาตรวจสอบอีกรอบ" },
+          disableClose: true
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            this.propService.deleteProposalData(ev.data).then((res) => {
+              this.propService.getProposalDataList().subscribe((res: any) => {
+                this.rows = res.data;
+              })
+            })
+          }
+        });
         break;
     }
-    
+
   }
 
   updateFilter(event) {
@@ -62,7 +78,7 @@ export class ProposalListComponent implements OnInit {
     // const val = event.target.value.toLowerCase();
 
     // filter our data
-    
+
   }
 
 }
