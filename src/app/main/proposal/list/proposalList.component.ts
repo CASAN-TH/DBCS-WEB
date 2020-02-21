@@ -54,13 +54,13 @@ export class ProposalListComponent implements OnInit {
         break;
       case "delete":
         const dialogRef = this.dialog.open(ModalComfirmComponent, {
-          width: '250px',
-          data: { title: "ยืนยันการลบ", massage: "กรุณาตรวจสอบอีกรอบ" }
+          width: '400px',
+          data: { title: "ยืนยันการลบ", message: "กรุณาตรวจสอบอีกรอบ" },
+          disableClose: true
         });
 
         dialogRef.afterClosed().subscribe(result => {
-          // console.log(result);
-          if (result === "comfirm") {
+          if (result) {
             this.propService.deleteProposalData(ev.data).then((res) => {
               this.propService.getProposalDataList().subscribe((res: any) => {
                 this.rows = res.data;

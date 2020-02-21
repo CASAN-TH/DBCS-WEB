@@ -14,15 +14,15 @@ export class ModalComfirmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data);
+
   }
 
   onConfirm() {
-    console.log('confirm');
+    this.dialogRef.close('confirm')
   }
 
   onCancel() {
-    console.log('cancel');
+    this.dialogRef.close()
   }
 
 }
