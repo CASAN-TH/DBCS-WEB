@@ -125,13 +125,12 @@ export class EstimateComponent implements OnInit {
       }
     ];
 
-    // this.proposalData = this.route.snapshot.data.item
-    //   ? this.route.snapshot.data.item.data
-    //   : {
-    //     owner:
-    //       "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
-    //   };
-
+    this.proposalData = this.route.snapshot.data.item
+      ? this.route.snapshot.data.item.data
+      : {
+          owner:
+            "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
+        };
     this.proposalForm = this.createForm();
 
 
