@@ -231,6 +231,7 @@ export class BudgetPlanComponent implements OnInit {
   /** end of utils of building tree */
 
   ngOnInit() {
+    
   }
 
   /** tree nodes manipulations */
