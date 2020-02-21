@@ -5,6 +5,9 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as english } from '../i18n/en';
 import { locale as thai } from '../i18n/th';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Step } from '../components/budget-plan/models/step';
+import * as Moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estimate',
@@ -17,6 +20,8 @@ export class EstimateComponent implements OnInit {
 
   proposalForm: FormGroup;
   proposalData: any = {};
+  charts: Array<Step>;
+  moment = Moment;
 
   plan: any[] = [
     { name: "แผนมาสาย" },
@@ -45,7 +50,8 @@ export class EstimateComponent implements OnInit {
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private location: Location,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -84,6 +90,35 @@ export class EstimateComponent implements OnInit {
 
     this.proposalForm = this.createForm();
 
+    const store = localStorage.getItem('charts');
+    if (store) {
+      this.charts = JSON.parse(store);
+    } else {
+      this.charts = [];
+      localStorage.setItem('charts', JSON.stringify([]));
+    }
+    // format dates
+    this.charts.forEach((chart) => {
+      chart.dates.start = this.moment(chart.dates.start).format('MM/DD');
+      chart.dates.end = this.moment(chart.dates.end).format('MM/DD');
+    });
+
+  }
+
+  createChart() {
+    const start = this.moment().format('YYYY-MM-DD');
+    const end = this.moment().add(7, 'days').format('YYYY-MM-DD');
+    const chart = {
+      'name': 'New Project',
+      'progress': 0,
+      'dates': {
+        'start': start,
+        'end': end,
+      },
+      'steps': []
+    } as Step;
+    this.charts.push(chart);
+    this.router.navigate(['charts', this.charts.indexOf(chart)]); // navigate to new chart
   }
 
 

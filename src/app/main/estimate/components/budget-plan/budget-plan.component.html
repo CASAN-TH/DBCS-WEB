@@ -1,6 +1,9 @@
 <div class="container" fxLayout="column">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
+      <a mat-button [routerLink]="['/home']">
+        <mat-icon>home</mat-icon>
+      </a>
       <span>{{chartData == null ? null : chartData.name}}</span>
       <span fxFlex></span>
       <span>ข้อมูลแผนการดำเนินโครงการ</span>
