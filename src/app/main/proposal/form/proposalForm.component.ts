@@ -117,12 +117,22 @@ export class ProposalFormComponent implements OnInit {
       }
     ];
 
-    this.proposalData = this.route.snapshot.data.item ? this.route.snapshot.data.item.data : {};
+    this.proposalData = this.route.snapshot.data.item
+      ? this.route.snapshot.data.item.data
+      : {
+          owner:
+            "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
+        };
     this.proposalForm = this.createForm();
   }
 
   createForm(): FormGroup {
     return this.formBuilder.group({
+      startdate: [this.proposalData.startdate, Validators.required],
+      enddate: [this.proposalData.enddate, Validators.required],
+      budgetyear: [this.proposalData.budgetyear],
+      budgetsummary: [this.proposalData.budgetsummary, Validators.required],
+      budgetinyear: [this.proposalData.budgetinyear, Validators.required],
       compcode: [this.proposalData.compcode],
       deptcode: [this.proposalData.deptcode],
       plancode: [this.proposalData.plancode, Validators.required],
@@ -133,12 +143,8 @@ export class ProposalFormComponent implements OnInit {
       owner: [this.proposalData.owner, Validators.required],
       criteria: [this.proposalData.criteria],
       objectives: [this.proposalData.objectives],
-      relatetostrategy1: [
-        this.proposalData.relatetostrategy1
-      ],
-      relatetostrategy2: [
-        this.proposalData.relatetostrategy2
-      ],
+      relatetostrategy1: [this.proposalData.relatetostrategyoutside],
+      relatetostrategy2: [this.proposalData.relatetostrategyinside],
       location: [this.proposalData.location],
       targetgroup: [this.proposalData.targetgroup],
       timeline: [this.proposalData.timeline],
@@ -158,33 +164,37 @@ export class ProposalFormComponent implements OnInit {
 
   async onSave() {
     console.log(this.proposalForm.value);
-    if(this.proposalData._id){
+    if (this.proposalData._id) {
       this.proposalForm.value._id = this.proposalData._id;
-      
-      this.proposalService.updateProposalData(this.proposalForm.value).then((res)=>{
-        console.log(res);
-        this.location.back();
-      })
-    }else{
-      this.proposalService.createProposalData(this.proposalForm.value).then(()=>{
-        this.location.back();
-      })
+
+      this.proposalService
+        .updateProposalData(this.proposalForm.value)
+        .then(res => {
+          console.log(res);
+          this.location.back();
+        });
+    } else {
+      this.proposalService
+        .createProposalData(this.proposalForm.value)
+        .then(() => {
+          this.location.back();
+        });
     }
-    
   }
 
   drop(ev) {
     ev.preventDefault();
     const files = ev.dataTransfer.files;
     console.log(files);
-    if(files[0].type ==="application/msword"){
-      alert(files[0].name)
-      
-      this.proposalService.uploadProposalData(files[0]).subscribe((res:any) => {
-        
-        this.proposalData =res.data;
-        this.proposalForm = this.createForm();
-      })
+    if (files[0].type === "application/msword") {
+      alert(files[0].name);
+
+      this.proposalService
+        .uploadProposalData(files[0])
+        .subscribe((res: any) => {
+          this.proposalData = res.data;
+          this.proposalForm = this.createForm();
+        });
     }
   }
 
