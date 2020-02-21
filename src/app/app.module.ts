@@ -17,6 +17,7 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ModalComfirmComponent } from './modals/modal-comfirm/modal-comfirm.component';
 
 const appRoutes: Routes = [
     {
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        ModalComfirmComponent
     ],
     imports: [
         BrowserModule,
@@ -66,6 +68,9 @@ const appRoutes: Routes = [
         // App modules
         LayoutModule,
         NgxSpinnerModule
+    ],
+    entryComponents: [
+        ModalComfirmComponent
     ],
     bootstrap: [
         AppComponent
