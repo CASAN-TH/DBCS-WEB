@@ -23,32 +23,9 @@ export class EstimateComponent implements OnInit {
   proposalForm: FormGroup;
   proposalData: any = {};
   lovData: any = [];
+
   charts: Array<Step>;
   moment = Moment;
-
-  plan: any[] = [
-    { name: "แผนมาสาย" },
-    { name: "แผนวางระเบิด" },
-    { name: "แผนสุ้มยิง" },
-    { name: "แผนว่ายน้ำ" }
-  ]
-  product: any[] = [
-    { name: "ดีมาก" },
-    { name: "ดี" },
-    { name: "ปานกลาง" },
-    { name: "น้อย" }
-  ]
-  activity: any[] = [
-    { name: "สำรวจดูพื้นที่" },
-    { name: "วางแผน" },
-    { name: "ประชุมโครงการ" },
-    { name: "ตรวจสอบโครงการ" }
-  ]
-  moneysource: any[] = [
-    { name: "เงินบุคลากร" },
-    { name: "เงินเบิกจ่าย" },
-    { name: "เงินอื่น ๆ" }
-  ]
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
@@ -62,6 +39,7 @@ export class EstimateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.lovData = [
       {
         code: "49",
@@ -147,13 +125,15 @@ export class EstimateComponent implements OnInit {
       }
     ];
 
-    this.proposalData = this.route.snapshot.data.item
-      ? this.route.snapshot.data.item.data
-      : {
-        owner:
-          "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
-      };
+    // this.proposalData = this.route.snapshot.data.item
+    //   ? this.route.snapshot.data.item.data
+    //   : {
+    //     owner:
+    //       "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
+    //   };
+
     this.proposalForm = this.createForm();
+
 
     const store = localStorage.getItem('charts');
     if (store) {
