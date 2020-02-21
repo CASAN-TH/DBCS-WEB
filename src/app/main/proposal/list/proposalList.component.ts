@@ -7,6 +7,7 @@ import { locale as thai } from '../i18n/th';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ProposalService } from '../services/proposal.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-proposal-list',
@@ -25,7 +26,8 @@ export class ProposalListComponent implements OnInit {
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private router: Router,
     private route: ActivatedRoute,
-    private propService: ProposalService
+    private propService: ProposalService,
+    private spinner: NgxSpinnerService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -44,6 +46,7 @@ export class ProposalListComponent implements OnInit {
   editProposal(ev){
     switch (ev.type){
       case "edit":
+        this.spinner.show();
         this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
         break;
       case "delete":

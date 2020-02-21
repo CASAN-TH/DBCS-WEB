@@ -16,22 +16,23 @@ import { fuseConfig } from 'app/fuse-config';
 
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 const appRoutes: Routes = [
     {
-        path        : 'auth',
+        path: 'auth',
         loadChildren: './authentication/authentication.module#AuthenticationModule'
     },
     {
-        path : 'estimate',
+        path: 'estimate',
         loadChildren: './main/estimate/estimate.module#EstimateModule'
     },
     {
-        path : 'proposal',
+        path: 'proposal',
         loadChildren: './main/proposal/proposal.module#ProposalModule'
     },
     {
-        path      : '**',
+        path: '**',
         redirectTo: 'estimate'
     }
 ];
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -63,12 +64,12 @@ const appRoutes: Routes = [
         FuseThemeOptionsModule,
 
         // App modules
-        LayoutModule
+        LayoutModule,
+        NgxSpinnerModule
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }
