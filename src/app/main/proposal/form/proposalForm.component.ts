@@ -9,6 +9,7 @@ import { locale as english } from "../i18n/en";
 import { locale as thai } from "../i18n/th";
 import { ProposalService } from "../services/proposal.service";
 import { ActivatedRoute } from "@angular/router";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: "app-proposal-form",
@@ -26,7 +27,8 @@ export class ProposalFormComponent implements OnInit {
     private location: Location,
     private formBuilder: FormBuilder,
     private proposalService: ProposalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -124,6 +126,7 @@ export class ProposalFormComponent implements OnInit {
             "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
         };
     this.proposalForm = this.createForm();
+    this.spinner.hide();
   }
 
   createForm(): FormGroup {

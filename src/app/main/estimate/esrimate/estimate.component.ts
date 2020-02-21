@@ -7,6 +7,9 @@ import { locale as thai } from '../i18n/th';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ProposalService } from 'app/main/proposal/services/proposal.service';
 import { ActivatedRoute } from '@angular/router';
+import { Step } from '../components/budget-plan/models/step';
+import * as Moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estimate',
@@ -20,12 +23,40 @@ export class EstimateComponent implements OnInit {
   proposalForm: FormGroup;
   proposalData: any = {};
   lovData: any = [];
+  charts: Array<Step>;
+  moment = Moment;
+
+  plan: any[] = [
+    { name: "แผนมาสาย" },
+    { name: "แผนวางระเบิด" },
+    { name: "แผนสุ้มยิง" },
+    { name: "แผนว่ายน้ำ" }
+  ]
+  product: any[] = [
+    { name: "ดีมาก" },
+    { name: "ดี" },
+    { name: "ปานกลาง" },
+    { name: "น้อย" }
+  ]
+  activity: any[] = [
+    { name: "สำรวจดูพื้นที่" },
+    { name: "วางแผน" },
+    { name: "ประชุมโครงการ" },
+    { name: "ตรวจสอบโครงการ" }
+  ]
+  moneysource: any[] = [
+    { name: "เงินบุคลากร" },
+    { name: "เงินเบิกจ่าย" },
+    { name: "เงินอื่น ๆ" }
+  ]
+
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private location: Location,
     private formBuilder: FormBuilder,
     private proposalService: ProposalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -123,6 +154,36 @@ export class EstimateComponent implements OnInit {
           "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
       };
     this.proposalForm = this.createForm();
+
+    const store = localStorage.getItem('charts');
+    if (store) {
+      this.charts = JSON.parse(store);
+    } else {
+      this.charts = [];
+      localStorage.setItem('charts', JSON.stringify([]));
+    }
+    // format dates
+    this.charts.forEach((chart) => {
+      chart.dates.start = this.moment(chart.dates.start).format('MM/DD');
+      chart.dates.end = this.moment(chart.dates.end).format('MM/DD');
+    });
+
+  }
+
+  createChart() {
+    const start = this.moment().format('YYYY-MM-DD');
+    const end = this.moment().add(7, 'days').format('YYYY-MM-DD');
+    const chart = {
+      'name': 'New Project',
+      'progress': 0,
+      'dates': {
+        'start': start,
+        'end': end,
+      },
+      'steps': []
+    } as Step;
+    this.charts.push(chart);
+    this.router.navigate(['charts', this.charts.indexOf(chart)]); // navigate to new chart
   }
 
   createForm(): FormGroup {

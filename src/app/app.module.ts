@@ -16,31 +16,34 @@ import { fuseConfig } from 'app/fuse-config';
 
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { ModalComfirmComponent } from './modals/modal-comfirm/modal-comfirm.component';
 
 const appRoutes: Routes = [
     {
-        path        : 'auth',
+        path: 'auth',
         loadChildren: './authentication/authentication.module#AuthenticationModule'
     },
     {
-        path : 'estimate',
+        path: 'estimate',
         loadChildren: './main/estimate/estimate.module#EstimateModule'
     },
     {
-        path : 'proposal',
+        path: 'proposal',
         loadChildren: './main/proposal/proposal.module#ProposalModule'
     },
     {
-        path      : '**',
+        path: '**',
         redirectTo: 'estimate'
     }
 ];
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        ModalComfirmComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -63,12 +66,15 @@ const appRoutes: Routes = [
         FuseThemeOptionsModule,
 
         // App modules
-        LayoutModule
+        LayoutModule,
+        NgxSpinnerModule
     ],
-    bootstrap   : [
+    entryComponents: [
+        ModalComfirmComponent
+    ],
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }
