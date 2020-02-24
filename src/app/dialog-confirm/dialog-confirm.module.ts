@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -9,7 +11,9 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   imports: [
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    FlexLayoutModule
   ],
   entryComponents: [
     ConfirmComponent
