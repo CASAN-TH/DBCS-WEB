@@ -1,3 +1,11 @@
 .content .mat-tab-label {
   height: 64px;
 }
+
+.mat-tab-body-wrapper {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  transition: height .5s cubic-bezier(.35,0,.25,1);
+}

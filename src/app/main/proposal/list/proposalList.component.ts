@@ -1,4 +1,3 @@
-import { ModalComfirmComponent } from './../../../modals/modal-comfirm/modal-comfirm.component';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { fuseAnimations } from '@fuse/animations';
@@ -9,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 import { ProposalService } from '../services/proposal.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MatDialog } from '@angular/material/dialog';
+import { DialogConfirmService } from 'app/dialog-confirm/service/dialog-confirm.service';
 
 @Component({
   selector: 'app-proposal-list',
@@ -30,13 +29,14 @@ export class ProposalListComponent implements OnInit {
     private route: ActivatedRoute,
     private propService: ProposalService,
     private spinner: NgxSpinnerService,
-    public dialog: MatDialog
+    public dialogConfirmService: DialogConfirmService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
 
 
   ngOnInit(): void {
+    this.spinner.hide();
     this.rows = this.route.snapshot.data.items.data;
   }
 
@@ -53,13 +53,11 @@ export class ProposalListComponent implements OnInit {
         this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
         break;
       case "delete":
-        const dialogRef = this.dialog.open(ModalComfirmComponent, {
-          width: '400px',
-          data: { title: "ยืนยันการลบ", message: "กรุณาตรวจสอบอีกรอบ" },
-          disableClose: true
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
+        const body = {
+          title: "ยืนยันการลบ",
+          message: "กรุณาตรวจสอบอีกรอบ"
+        };
+        this.dialogConfirmService.show(body).then((result) => {
           if (result) {
             this.propService.deleteProposalData(ev.data).then((res) => {
               this.propService.getProposalDataList().subscribe((res: any) => {
@@ -67,7 +65,7 @@ export class ProposalListComponent implements OnInit {
               })
             })
           }
-        });
+        })
         break;
     }
 
