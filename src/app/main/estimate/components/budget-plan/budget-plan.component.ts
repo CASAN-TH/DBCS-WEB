@@ -54,7 +54,7 @@ export class ChartDatabase {
       const start = moment().format('YYYY-MM-DD');
       const end = moment().add(7, 'days').format('YYYY-MM-DD');
       const root = {
-        'name': 'Project Name',
+        'name': 'Project Nam',
         'progress': 0,
         'dates': {
           'start': start,

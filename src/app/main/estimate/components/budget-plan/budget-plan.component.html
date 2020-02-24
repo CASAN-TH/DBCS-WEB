@@ -14,12 +14,13 @@
     <div class="sidenav names" [ngStyle]="sidebarStyle" fxLayout="column">
       <div class="sidenav-header text-center">Steps</div>
       <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl" [ngStyle]="sidebarStyle"
-        mwlResizable [resizeEdges]="{right: true}" [enableGhostResize]="true" [resizeSnapGrid]="{right: 1}" (resizeEnd)="onResizeEnd($event)">
+        mwlResizable [resizeEdges]="{right: true}" [enableGhostResize]="true" [resizeSnapGrid]="{right: 1}"
+        (resizeEnd)="onResizeEnd($event)">
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
           <button mat-icon-button disabled></button>
           <mat-form-field fxFlex floatLabel="never">
-            <input matInput placeholder="Step Name" name="node" [(ngModel)]="node.name" (ngModelChange)="updateStepName(node, $event)"
-              required>
+            <input matInput placeholder="Step Name" name="node" [(ngModel)]="node.name"
+              (ngModelChange)="updateStepName(node, $event)" required>
           </mat-form-field>
           <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<2">
             <mat-icon>add</mat-icon>
@@ -35,8 +36,8 @@
             </mat-icon>
           </button>
           <mat-form-field fxFlex floatLabel="never">
-            <input matInput placeholder="Step Name" name="node" [(ngModel)]="node.name" (ngModelChange)="updateStepName(node, $event)"
-              required>
+            <input matInput placeholder="Step Name" name="node" [(ngModel)]="node.name"
+              (ngModelChange)="updateStepName(node, $event)" required>
           </mat-form-field>
           <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<2">
             <mat-icon>add</mat-icon>
@@ -52,15 +53,15 @@
       <div class="sidenav-header text-center">Dates</div>
       <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node">
-          <mat-form-field class="date-picker" floatLabel="never">
+          <mat-form-field class="date-picker" floatLabel="never" *ngIf="node.level !== 0">
             <input matInput [matDatepicker]="startDate" [min]="node.level > 0 ? getParentStep(node).dates.start : null"
               [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.start"
               (ngModelChange)="updateDateRange(node)">
             <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
             <mat-datepicker #startDate></mat-datepicker>
           </mat-form-field>
-          &nbsp;&nbsp;-&nbsp;&nbsp;
-          <mat-form-field class="date-picker" floatLabel="never">
+          <span *ngIf="node.level !== 0">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <mat-form-field class="date-picker" floatLabel="never" *ngIf="node.level !== 0">
             <input matInput [matDatepicker]="endDate" [min]="node.level > 0 ? getParentStep(node).dates.start : null"
               [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.end"
               (ngModelChange)="updateDateRange(node)">
@@ -88,7 +89,8 @@
       <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node" class="calendar-row">
           <div *ngFor="let date of dates; let i=index;" class="calendar-cell" [ngClass]="{today:date===today}"
-            [attr.date-filled]="node.progressDates.indexOf(date)>-1" [attr.date-inside]="date>=node.dates.start&&date<=node.dates.end">
+            [attr.date-filled]="node.progressDates.indexOf(date)>-1"
+            [attr.date-inside]="date>=node.dates.start&&date<=node.dates.end">
           </div>
         </mat-tree-node>
       </mat-tree>
