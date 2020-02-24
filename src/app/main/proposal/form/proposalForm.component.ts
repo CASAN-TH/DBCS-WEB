@@ -9,7 +9,8 @@ import { locale as english } from "../i18n/en";
 import { locale as thai } from "../i18n/th";
 import { ProposalService } from "../services/proposal.service";
 import { ActivatedRoute } from "@angular/router";
-import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerService } from "ngx-spinner";
+import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
 
 @Component({
   selector: "app-proposal-form",
@@ -28,7 +29,8 @@ export class ProposalFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private proposalService: ProposalService,
     private route: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private splash: FuseSplashScreenService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -162,25 +164,31 @@ export class ProposalFormComponent implements OnInit {
   }
 
   goBack() {
+    this.spinner.show();
     this.location.back();
   }
 
   async onSave() {
-    console.log(this.proposalForm.value);
+    // console.log(this.proposalForm.value);
+    this.spinner.show();
     if (this.proposalData._id) {
       this.proposalForm.value._id = this.proposalData._id;
 
       this.proposalService
         .updateProposalData(this.proposalForm.value)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           this.location.back();
+        }).catch(err =>{
+          this.spinner.hide();
         });
     } else {
       this.proposalService
         .createProposalData(this.proposalForm.value)
         .then(() => {
           this.location.back();
+        }).catch( err => {
+          this.spinner.hide();
         });
     }
   }
@@ -191,13 +199,22 @@ export class ProposalFormComponent implements OnInit {
     console.log(files);
     if (files[0].type === "application/msword") {
       alert(files[0].name);
-
+      this.spinner.show();
       this.proposalService
         .uploadProposalData(files[0])
         .subscribe((res: any) => {
+          console.log(res);
           this.proposalData = res.data;
           this.proposalForm = this.createForm();
+          this.spinner.hide();
+        }, (err) => {
+          console.log(err);
+          this.spinner.hide();
+          throw new Error("รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง !<br>ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น...");
         });
+    }else{
+      //format is wrong,
+      throw new Error("รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง ! \n ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น...");
     }
   }
 
