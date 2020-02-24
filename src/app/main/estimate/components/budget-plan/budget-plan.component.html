@@ -21,7 +21,7 @@
             <input matInput placeholder="Step Name" name="node" [(ngModel)]="node.name" (ngModelChange)="updateStepName(node, $event)"
               required>
           </mat-form-field>
-          <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<3">
+          <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<2">
             <mat-icon>add</mat-icon>
           </button>
           <button mat-icon-button (click)="deleteStep(node)" class="text-red" *ngIf="node.level!==0">
@@ -38,7 +38,7 @@
             <input matInput placeholder="Step Name" name="node" [(ngModel)]="node.name" (ngModelChange)="updateStepName(node, $event)"
               required>
           </mat-form-field>
-          <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<3">
+          <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<2">
             <mat-icon>add</mat-icon>
           </button>
           <button mat-icon-button (click)="deleteStep(node)" class="text-red" *ngIf="node.level!==0">
