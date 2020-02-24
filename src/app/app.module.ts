@@ -34,19 +34,20 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ModalComfirmComponent } from "./modals/modal-comfirm/modal-comfirm.component";
 import { GlobalErrorHandler } from './global-error-handler';
 import { ServerErrorInterceptor } from './server-error.interceptor';
+import { DialogConfirmModule } from './dialog-confirm/dialog-confirm.module';
 
 
 export const MY_FORMATS = {
-    parse: {
-      dateInput: "DD/MM/YYYY"
-    },
-    display: {
-      dateInput: "DD/MM/YYYY",
-      monthYearLabel: "MM YYYY",
-      dateA11yLabel: "DD/MM/YYYY",
-      monthYearA11yLabel: "MM YYYY"
-    }
-  };
+  parse: {
+    dateInput: "DD/MM/YYYY"
+  },
+  display: {
+    dateInput: "DD/MM/YYYY",
+    monthYearLabel: "MM YYYY",
+    dateA11yLabel: "DD/MM/YYYY",
+    monthYearA11yLabel: "MM YYYY"
+  }
+};
 
 const appRoutes: Routes = [
   {
@@ -68,7 +69,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ModalComfirmComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -94,9 +95,10 @@ const appRoutes: Routes = [
 
     // App modules
     LayoutModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    DialogConfirmModule
   ],
-  entryComponents: [ModalComfirmComponent],
+  entryComponents: [],
   bootstrap: [AppComponent],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
@@ -114,6 +116,6 @@ const appRoutes: Routes = [
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
   ]
 })
-export class AppModule {}
+export class AppModule { }
 
 
