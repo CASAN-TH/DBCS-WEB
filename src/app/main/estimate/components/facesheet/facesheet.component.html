@@ -1,13 +1,12 @@
-<div fxLayout="column">
-  <div fxLayout="row" fxLayoutAlign="end" class="pr-20">
-    <p>กผง.003/3</p>
+<div fxLayout="column" *ngIf="proposalData">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="50" fxLayoutAlign="end">
+      <p>กผง.003/3</p>
+    </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="80" fxLayoutAlign="center">
-      
-    </div>
-    <div fxFlex="100" fxFlex.gt-sm="20" class="pr-20" fxLayoutAlign="end">
-      (ทั่วไป)
+    <div fxFlex="48" fxLayoutAlign="end">
+      <p>ทั่วไป</p>
     </div>
   </div>
 
@@ -16,90 +15,102 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
       <p>หน่วยงาน</p>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">สำนักเลขาธิการ<span>กลุ่ม/ฝ่าย ประชาสัมพันธ์์และเผยแพร่</span></span>
+        <span class="pl-20">{{proposalData.data.deptname}}</span>
       </p>
     </div>
   </div>
+
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
+      <p>กลุ่ม/ฝ่าย </p>
+    </div>
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
+      <p>
+        <span class="pl-20">{{proposalData.data.groupname}}</span>
+      </p>
+    </div>
+  </div>
+  
+
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="10"  fxLayoutAlign="start">
       <p>รายการ</p>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">โครงการจัดซื้อครุภัณฑ์โฆษณาและเผยแพร่ ประจะปีงบประมาณ 2563</span>
+        <span class="pl-20">{{proposalData.data.name}}</span>
       </p>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
       <p>แผนงาน</p>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">พื้นฐานด้านการสร้างการเติบโตบนคุณภาพชีวิตที่เป็นมิตรต่อสิ่งแวดล้อม</span>
+        <span class="pl-20">{{proposalData.data.planname}}</span>
       </p>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
       <p>ผลผลิต/โครงการ</p>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">การบริหารจัดการทรัพยากรน้ำทั้งระบบ</span>
+        <span class="pl-20">{{proposalData.data.projectname}}</span>
       </p>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
       <p>กิจกรรม</p>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">การบริหารงานการจัดการทรัพยากรน้ำทั้งระบบ</span>
+        <span class="pl-20">{{proposalData.data.activityname}}</span>
       </p>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
       <p>ประเภทรายจ่าย</p>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">งบลงทุน</span>
+        <span class="pl-20">{{proposalData.data.sourcename}}</span>
       </p>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
       <p>รวมเงิน</p>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">961,700.00 บาท</span>
+        <span class="pl-20">{{proposalData.data.budgetsummary}}บาท</span>
       </p>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start">
+    <div fxFlex="10"  fxLayoutAlign="start">
 
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start">
+    <div fxFlex="50" fxFlex.gt-sm="40" fxLayoutAlign="start">
       <p>
-        <span class="pl-20">(เก้าแสนหกหมื่นหนึ่งพันเจ็ดร้อยบาทถ้วน)</span>
+        <span class="pl-20">({{proposalData.data.budgetsummarytext}})</span>
       </p>
     </div>
   </div>
 
-
-
   <div fxLayout="row" fxLayoutAlign="center">
-    <p>-----------------------------------------------------------------------------</p>
+    <hr hr width=50% size=5 color=black>
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center">
@@ -107,13 +118,81 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="100" fxFlex.gt-sm="50" fxLayoutAlign="center">
-      <p class="pl-20">เรียน ลธน. ผ่าน ผอ.สลธ.</p>
+    <div fxFlex="45">
+      <p>เรียน ลธน. ผ่าน ผอ.สลธ.</p>
+    </div>
+  </div>
+  <div fxLayout="​row" fxLayoutAlign="center">
+    <div fxFlex="40">
+      <p>
+        ประมาณการฉบับนี้ตั้งขึ้นเพื่อควบคุมค่าใช้จ่ายในโครงการ{{proposalData.data.name}}
+      </p>
+    </div>
+  </div>
+  <div fxLayout="​row" fxLayoutAlign="center">
+    <div fxFlex="40">
+      <p>
+        ระบุเหตุผลที่ต้องการดำเนินการโดยสังเขป
+      </p>
+    </div>
+  </div>
+  <div fxLayout="​row" fxLayoutAlign="center">
+    <div fxFlex="40">
+      <p>
+        ดังนั้น เพื่อให้การดำเนินงานบรรลุตามวัตถุประสงค์ที่วางไว้ จึงขออนุมัติใช้งบประมาณเป็นเงินทั้งสิ้น 1,165,300 บาท
+        ( หนึ่งล้านหนึ่งแสนหกหมื่นห้าพันสามร้อยบาทถ้วน )เพื่อดำเนินงานในปีงบประมาณ พ.ศ.2563 ตามรายละเอียดแนบท้ายนี้
+      </p>
+    </div>
+  </div>
+
+  <div fxLayout="​row" fxLayoutAlign="center">
+    <div fxFlex="40">
+      <p>
+        จึงเรียนมาเพื่อโปรดพิจารณาอนุมัติ
+      </p>
     </div>
   </div>
 
 
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="50" fxLayoutAlign="end">
+      <p>( นางสาวนุชจนาถ ชูบัว )</p>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="40" fxLayoutAlign="end">
+      <p>ผปผ.ลธ.</p>
+    </div>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="20" fxLayoutAlign="end">
+      <p>ผ่าน</p>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="center">
+      <p>อนุมัติ</p>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="30" fxLayoutAlign="end">
+      <p>( นางสาวยุคล นุมาศ )</p>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="center">
+      <p>( นายสมเกียรติ ประจำวงษ์ )</p>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="20" fxLayoutAlign="end">
+      <p>ผอ.สลธ.</p>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="center">
+      <p>ลธน.</p>
+    </div>
+  </div>
 </div>
+
 
 <div fxLayout="row wrap" class="containerfile">
   <div fxFlex="20" fxLayoutAlign="center" class="single-file" *ngFor="let file of files; let i = index">

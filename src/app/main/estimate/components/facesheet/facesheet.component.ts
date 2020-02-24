@@ -10,14 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FacesheetComponent implements OnInit {
   files: any[] = [];
-  proposalData: any;
+  proposalData: any
   constructor(
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    console.log(this.files)
-    console.log(this.route.snapshot.data.item);
+    this.proposalData = this.route.snapshot.data.item
+    console.log(this.proposalData);
   }
 
 
