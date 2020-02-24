@@ -46,35 +46,29 @@ export class ProposalListComponent implements OnInit {
     this.router.navigateByUrl("/proposal/proposalForm/new");
   }
 
-  // editProposal(ev) {
-  //   switch (ev.type) {
-  //     case "edit":
-  //       this.spinner.show();
-  //       this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
-  //       break;
-  //     case "delete":
-  //       const dialogRef = this.dialog.open(ModalComfirmComponent, {
-  //         width: '400px',
-  //         data: { title: "ยืนยันการลบ", message: "กรุณาตรวจสอบอีกรอบ" },
-  //         disableClose: true
-  //       });
-
-  //       dialogRef.afterClosed().subscribe(result => {
-  //         if (result) {
-  //           this.propService.deleteProposalData(ev.data).then((res) => {
-  //             this.propService.getProposalDataList().subscribe((res: any) => {
-  //               this.rows = res.data;
-  //             })
-  //           })
-  //         }
-  //       });
-  //       break;
-  //   }
-
-  // }
-
   editProposal(ev) {
-    this.dialogConfirmService.show();
+    switch (ev.type) {
+      case "edit":
+        this.spinner.show();
+        this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
+        break;
+      case "delete":
+        const body = {
+          title: "ยืนยันการลบ",
+          message: "กรุณาตรวจสอบอีกรอบ"
+        };
+        this.dialogConfirmService.show(body).then((result) => {
+          if (result) {
+            this.propService.deleteProposalData(ev.data).then((res) => {
+              this.propService.getProposalDataList().subscribe((res: any) => {
+                this.rows = res.data;
+              })
+            })
+          }
+        })
+        break;
+    }
+
   }
 
   updateFilter(event) {

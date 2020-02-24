@@ -11,15 +11,19 @@ export class DialogConfirmService {
     public dialog: MatDialog
   ) { }
 
-  show() {
-    const dialogRef = this.dialog.open(ConfirmComponent, {
-      width: '400px',
-      data: { title: "service", message: "service Detail" },
-      disableClose: true
-    });
+  show(body): Promise<any> {
+    return new Promise((resolve, reject) => {
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
+      const dialogRef = this.dialog.open(ConfirmComponent, {
+        width: '400px',
+        data: body,
+        disableClose: true
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        resolve(result);
+      });
+
     });
   }
 
