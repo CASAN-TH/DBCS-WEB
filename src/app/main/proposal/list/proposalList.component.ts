@@ -37,6 +37,7 @@ export class ProposalListComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.spinner.hide();
     this.rows = this.route.snapshot.data.items.data;
   }
 
