@@ -34,7 +34,7 @@
   <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.projectcode">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>กิจกรรม</mat-label>
-      <mat-select formControlName="activitycode" name="activitycode">
+      <mat-select formControlName="activitycode" name="activitycode" (selectionChange)="onActivityChange($event)">
         <mat-option>--</mat-option>
         <mat-option *ngFor="let item of activityDataList" [value]="item.code">{{
           item.name
@@ -46,7 +46,7 @@
   <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.activitycode">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>แหล่งเงิน</mat-label>
-      <mat-select formControlName="sourcecode" name="sourcecode">
+      <mat-select formControlName="sourcecode" name="sourcecode" (selectionChange)="onSourceChange($event)">
         <mat-option>--</mat-option>
         <mat-option *ngFor="let item of sourceDataList" [value]="item.code">{{
           item.name
@@ -162,8 +162,8 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <ejs-richtexteditor
-        formControlName="relatetostrategy1"
-        name="relatetostrategy1"
+        formControlName="relatetostrategyoutside"
+        name="relatetostrategyoutside"
       ></ejs-richtexteditor>
     </mat-expansion-panel>
   </mat-accordion>
@@ -176,8 +176,8 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <ejs-richtexteditor
-        formControlName="relatetostrategy2"
-        name="relatetostrategy2"
+        formControlName="relatetostrategyinside"
+        name="relatetostrategyinside"
       ></ejs-richtexteditor>
     </mat-expansion-panel>
   </mat-accordion>

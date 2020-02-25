@@ -143,15 +143,19 @@ export class ProposalFormComponent implements OnInit {
       compcode: [this.proposalData.compcode],
       deptcode: [this.proposalData.deptcode],
       plancode: [this.proposalData.plancode, Validators.required],
+      planname: [this.proposalData.planname],
       projectcode: [this.proposalData.projectcode, Validators.required],
+      projectname: [this.proposalData.projectname],
       activitycode: [this.proposalData.activitycode, Validators.required],
+      activityname: [this.proposalData.activityname],
       sourcecode: [this.proposalData.sourcecode, Validators.required],
+      sourcename: [this.proposalData.sourcename],
       name: [this.proposalData.name, Validators.required],
       owner: [this.proposalData.owner, Validators.required],
       criteria: [this.proposalData.criteria],
       objectives: [this.proposalData.objectives],
-      relatetostrategy1: [this.proposalData.relatetostrategyoutside],
-      relatetostrategy2: [this.proposalData.relatetostrategyinside],
+      relatetostrategyoutside: [this.proposalData.relatetostrategyoutside],
+      relatetostrategyinside: [this.proposalData.relatetostrategyinside],
       location: [this.proposalData.location],
       targetgroup: [this.proposalData.targetgroup],
       timeline: [this.proposalData.timeline],
@@ -176,9 +180,19 @@ export class ProposalFormComponent implements OnInit {
   async onSave() {
     // console.log(this.proposalForm.value);
     this.spinner.show();
+    this.proposalForm.value.projectname = this.lovData.filter((item: any) => {
+      return item.code === this.proposalForm.value.projectcode;
+    })[0].name;
+    this.proposalForm.value.activityname = this.lovData.filter((item: any) => {
+      return item.code === this.proposalForm.value.activitycode;
+    })[0].name;
+    this.proposalForm.value.sourcename = this.lovData.filter((item: any) => {
+      return item.code === this.proposalForm.value.sourcecode;
+    })[0].name;
+    
     if (this.proposalData._id) {
       this.proposalForm.value._id = this.proposalData._id;
-
+      console.log(this.proposalForm.value);
       this.proposalService
         .updateProposalData(this.proposalForm.value)
         .then(res => {
@@ -204,10 +218,13 @@ export class ProposalFormComponent implements OnInit {
     ev.preventDefault();
     const files = ev.dataTransfer.files;
     console.log(files);
-    if (files[0].type === "application/msword") {
+    if (files[0].type === "application/msword" || files[0].type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
       // alert(files[0].name);
       this.dialogConfirmService
-        .show({ title: "นำเข้าข้อมูลจากเอกสาร", message: `ท่านต้องการนำเข้าข้อมูลจากเอกสาร ${files[0].name} ใช่ หรือ ไม่ ?` })
+        .show({
+          title: "นำเข้าข้อมูลจากเอกสาร",
+          message: `ท่านต้องการนำเข้าข้อมูลจากเอกสาร ${files[0].name} ใช่ หรือ ไม่ ?`
+        })
         .then(result => {
           if (result) {
             this.spinner.show();

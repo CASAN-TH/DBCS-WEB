@@ -38,15 +38,29 @@ export class Form001Component implements OnInit {
   }
 
   onPlanChange(e) {
-    console.log(e.value);
+    // console.log(e.source.selected.viewValue);
+    this.proposalForm.value.planname = e.source.selected.viewValue;
     this.projectDataList = this.lovData.filter((item: any) => {
       return item.msttype === "plan" && item.parentcode === e.value;
     });
   }
 
   onProjectChange(e){
+    
+    this.proposalForm.value.projectname = e.source.selected.viewValue;
+    console.log(this.proposalForm.value.projectname);
     this.activityDataList = this.lovData.filter((item: any) => {
       return item.msttype === "plan" && item.parentcode === e.value;
     });
+  }
+
+  onActivityChange(e){
+    console.log(e.source.selected.viewValue);
+    this.proposalForm.value.activityname = e.source.selected.viewValue;
+  }
+
+  onSourceChange(e){
+    console.log(e.source.selected.viewValue);
+    this.proposalForm.value.sourcename = e.source.selected.viewValue;
   }
 }
