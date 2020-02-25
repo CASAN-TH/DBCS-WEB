@@ -2,7 +2,7 @@
   <div class="content">
     <ngx-datatable #table class="material fullscreen" [columnMode]="'flex'" [headerHeight]="64" [footerHeight]="64"
       rowHeight="auto" scrollbarH="true" [limit]="10" [rows]="rows">
-      <ngx-datatable-column name="รหัสโครงการ" [flexGrow]="2">
+      <ngx-datatable-column name="รหัสโครงการ" [flexGrow]="1">
         <ng-template ngx-datatable-cell-template let-row="row">
           {{ row.budgetcodetmp }}
         </ng-template>
@@ -17,9 +17,14 @@
           {{ row.timeline }}
         </ng-template>
       </ngx-datatable-column>
-      <ngx-datatable-column name="งบประมาณ" [flexGrow]="2">
+      <ngx-datatable-column name="งบประมาณทั้งโครงการ" [flexGrow]="1.5">
         <ng-template ngx-datatable-cell-template let-row="row">
-          {{ 2500000 | number }}
+          {{ row.budgetsummary | number }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="งบประมาณที่ใช้ในปีนี้" [flexGrow]="1.5">
+        <ng-template ngx-datatable-cell-template let-row="row">
+          {{ row.budgetinyear | number }}
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="สถานะ" [flexGrow]="2">
