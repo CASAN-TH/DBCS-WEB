@@ -1,4 +1,4 @@
-<div class="page-layout carded  fullwidth inner-scroll" >
+<div class="page-layout carded  fullwidth inner-scroll">
   <!-- TOP BACKGROUND -->
   <div class="top-bg accent"></div>
   <!-- / TOP BACKGROUND -->
@@ -34,17 +34,19 @@
             class="logo-text h1"
             [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
           >
-          ขอตั้งงบประมาณรายจ่ายประจำปี
+            ขอตั้งงบประมาณรายจ่ายประจำปี
           </span>
-          
         </div>
-        <div fxFlex="100" fxFlex.gt-sm="40" class="pl-20  pr-16" fxLayoutAlign="end">
+        <div
+          fxFlex="100"
+          fxFlex.gt-sm="40"
+          class="pl-20  pr-16"
+          fxLayoutAlign="end"
+        >
           <button [disabled]="proposalForm.invalid" (click)="onSave()">
             บันทึกข้อมูล
           </button>
         </div>
-
-        
       </div>
       <!-- / APP TITLE -->
     </div>
@@ -53,21 +55,35 @@
     <!-- CONTENT CARD -->
     <div class="content-card">
       <!-- CONTENT -->
-      <div class="content" (drop)="drop($event)"
-      (dragover)="allowDrop($event)">
+      <div class="content" (drop)="drop($event)" (dragover)="allowDrop($event)">
+       
         <mat-tab-group fxFlex>
-          <mat-tab class="document" label="แบบฟอร์มประมาณการ (กผง003)" >
-            <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=https://res.cloudinary.com/hhpl9pajl/raw/upload/v1582309842/%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9F%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%A1%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B9%80%E0%B8%AA%E0%B8%99%E0%B8%AD%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%8A%E0%B8%AA.63_1_fahwvl.doc' width='100%' height='100%' frameborder='0'></iframe>
+          
+          <mat-tab label="แบบฟอร์มข้อเสนอโครงการ (กผง001)">
+            <app-form001
+              class="pt-2"
+              [proposalForm]="proposalForm"
+              [lovData]="lovData"
+            ></app-form001>
           </mat-tab>
-          <mat-tab label="แบบฟอร์มข้อเสนอโครงการ (กผง001)" >
-           <app-form001 class="pt-2"  [proposalForm]="proposalForm" [lovData]="lovData"></app-form001>
+          
+          <mat-tab
+            label="แผนการดำเนินโครงการและแผนการใช้จ่ายเงินงบประมาณ (กผง002)"
+          >
           </mat-tab>
-          <mat-tab label="แผนการดำเนินโครงการและแผนการใช้จ่ายเงินงบประมาณ (กผง002)" >
-
+          <mat-tab class="document" label="แบบฟอร์มประมาณการ (กผง003)">
+            <iframe
+              src="https://view.officeapps.live.com/op/embed.aspx?src=https://test-001-01.s3.ap-southeast-1.amazonaws.com/%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9F%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%A1%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B9%80%E0%B8%AA%E0%B8%99%E0%B8%AD%E0%B8%A3%E0%B8%96%E0%B8%95%E0%B8%A3%E0%B8%A7%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B9%8C.doc"
+              width="100%"
+              height="100%"
+              frameborder="0"
+            ></iframe>
           </mat-tab>
+          
         </mat-tab-group>
         <!--  -->
       </div>
+      
       <!-- /CONTENT -->
     </div>
     <!-- /CONTENT CARD -->

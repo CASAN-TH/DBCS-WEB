@@ -10,7 +10,8 @@ import { locale as thai } from "../i18n/th";
 import { ProposalService } from "../services/proposal.service";
 import { ActivatedRoute } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
-import { FuseSplashScreenService } from '@fuse/services/splash-screen.service';
+import { FuseSplashScreenService } from "@fuse/services/splash-screen.service";
+import { DialogConfirmService } from "app/dialog-confirm/service/dialog-confirm.service";
 
 @Component({
   selector: "app-proposal-form",
@@ -30,7 +31,8 @@ export class ProposalFormComponent implements OnInit {
     private proposalService: ProposalService,
     private route: ActivatedRoute,
     private spinner: NgxSpinnerService,
-    private splash: FuseSplashScreenService
+    private splash: FuseSplashScreenService,
+    private dialogConfirmService: DialogConfirmService
   ) {
     this._fuseTranslationLoaderService.loadTranslations(english, thai);
   }
@@ -124,8 +126,8 @@ export class ProposalFormComponent implements OnInit {
     this.proposalData = this.route.snapshot.data.item
       ? this.route.snapshot.data.item.data
       : {
-          owner:
-            "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
+          // owner:
+          //   "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
         };
     this.proposalForm = this.createForm();
     this.spinner.hide();
@@ -159,7 +161,10 @@ export class ProposalFormComponent implements OnInit {
       output: [this.proposalData.output],
       outcome: [this.proposalData.outcome],
       benefit: [this.proposalData.benefit],
-      indicator: [this.proposalData.indicator]
+      indicator: [this.proposalData.indicator],
+      file001Url: [this.proposalData.file001Url],
+      file002Url: [this.proposalData.file002Url],
+      file003Url: [this.proposalData.file003Url]
     });
   }
 
@@ -179,7 +184,8 @@ export class ProposalFormComponent implements OnInit {
         .then(res => {
           // console.log(res);
           this.location.back();
-        }).catch(err =>{
+        })
+        .catch(err => {
           this.spinner.hide();
         });
     } else {
@@ -187,7 +193,8 @@ export class ProposalFormComponent implements OnInit {
         .createProposalData(this.proposalForm.value)
         .then(() => {
           this.location.back();
-        }).catch( err => {
+        })
+        .catch(err => {
           this.spinner.hide();
         });
     }
@@ -198,23 +205,34 @@ export class ProposalFormComponent implements OnInit {
     const files = ev.dataTransfer.files;
     console.log(files);
     if (files[0].type === "application/msword") {
-      alert(files[0].name);
-      this.spinner.show();
-      this.proposalService
-        .uploadProposalData(files[0])
-        .subscribe((res: any) => {
-          console.log(res);
-          this.proposalData = res.data;
-          this.proposalForm = this.createForm();
-          this.spinner.hide();
-        }, (err) => {
-          console.log(err);
-          this.spinner.hide();
-          throw new Error("รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง !<br>ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น...");
+      // alert(files[0].name);
+      this.dialogConfirmService
+        .show({ title: "นำเข้าข้อมูลจากเอกสาร", message: `ท่านต้องการนำเข้าข้อมูลจากเอกสาร ${files[0].name} ใช่ หรือ ไม่ ?` })
+        .then(result => {
+          if (result) {
+            this.spinner.show();
+            this.proposalService.uploadProposalData(files[0]).subscribe(
+              (res: any) => {
+                console.log(res);
+                this.proposalData = res.data;
+                this.proposalForm = this.createForm();
+                this.spinner.hide();
+              },
+              err => {
+                console.log(err);
+                this.spinner.hide();
+                throw new Error(
+                  "รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง !<br>ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น..."
+                );
+              }
+            );
+          }
         });
-    }else{
+    } else {
       //format is wrong,
-      throw new Error("รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง ! \n ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น...");
+      throw new Error(
+        "รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง ! \n ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น..."
+      );
     }
   }
 
