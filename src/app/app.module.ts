@@ -54,6 +54,22 @@ const appRoutes: Routes = [
     loadChildren: "./authentication/authentication.module#AuthenticationModule"
   },
   {
+    path: "strategic",
+    loadChildren: "./main/strategic/strategic.module#StrategicModule"
+  },
+  {
+    path: "expenditure",
+    loadChildren: "./main/expenditure/expenditure.module#ExpenditureModule"
+  },
+  {
+    path: "department",
+    loadChildren: "./main/department/department.module#DepartmentModule"
+  },
+  {
+    path: "estimateplan",
+    loadChildren: "./main/estimateplan/estimateplan.module#EstimateplanModule"
+  },
+  {
     path: "estimate",
     loadChildren: "./main/estimate/estimate.module#EstimateModule"
   },
