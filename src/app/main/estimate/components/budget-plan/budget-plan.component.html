@@ -12,7 +12,7 @@
   <div class="sidenav-container" fxFlex fxLayout="row">
     <!-- names -->
     <div class="sidenav names" [ngStyle]="sidebarStyle" fxLayout="column">
-      <div class="sidenav-header text-center">Steps</div>
+      <div class="sidenav-header text-center">ชื่อโครงการ / รายละเอียด</div>
       <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl" [ngStyle]="sidebarStyle"
         mwlResizable [resizeEdges]="{right: true}" [enableGhostResize]="true" [resizeSnapGrid]="{right: 1}"
         (resizeEnd)="onResizeEnd($event)">
@@ -50,18 +50,18 @@
     </div>
     <!-- date pickers -->
     <div class="sidenav date-pickers" fxLayout="column">
-      <div class="sidenav-header text-center">Dates</div>
+      <div class="sidenav-header text-center">วันที่ดำเนินการ / วันที่สิ้นสุด</div>
       <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node">
-          <mat-form-field class="date-picker" floatLabel="never" *ngIf="node.level !== 0">
+          <mat-form-field class="date-picker" floatLabel="never" *ngIf="node.level >1">
             <input matInput [matDatepicker]="startDate" [min]="node.level > 0 ? getParentStep(node).dates.start : null"
               [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.start"
               (ngModelChange)="updateDateRange(node)">
             <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
             <mat-datepicker #startDate></mat-datepicker>
           </mat-form-field>
-          <span *ngIf="node.level !== 0">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-          <mat-form-field class="date-picker" floatLabel="never" *ngIf="node.level !== 0">
+          <span *ngIf="node.level >1">&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+          <mat-form-field class="date-picker" floatLabel="never" *ngIf="node.level >1">
             <input matInput [matDatepicker]="endDate" [min]="node.level > 0 ? getParentStep(node).dates.start : null"
               [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.end"
               (ngModelChange)="updateDateRange(node)">
@@ -72,7 +72,7 @@
       </mat-tree>
     </div>
     <!-- progress -->
-    <div class="sidenav progress-bars" fxLayout="column">
+    <!-- <div class="sidenav progress-bars" fxLayout="column">
       <div class="sidenav-header text-center">Progress</div>
       <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node" class="progress-row">
@@ -80,9 +80,9 @@
             [(ngModel)]="node.progress" (ngModelChange)="updateProgress(node, $event)"></mat-slider>
         </mat-tree-node>
       </mat-tree>
-    </div>
+    </div> -->
     <!-- calendar -->
-    <div class="sidenav-content calendar" fxLayout="column">
+    <!-- <div class="sidenav-content calendar" fxLayout="column">
       <div fxLayout="row">
         <div *ngFor="let date of dates" class="calendar-cell" [ngClass]="{today:date===today}">{{date.slice(5)}}</div>
       </div>
@@ -94,6 +94,11 @@
           </div>
         </mat-tree-node>
       </mat-tree>
+    </div> -->
+    <div class="sidenav-content calendar" fxLayout="row">
+      <span class="sidenav-headermonth text-center">Month 1</span><span class="sidenav-headermonth text-center">Month 2</span><span class="sidenav-headermonth text-center">Month 3</span><span class="sidenav-headermonth text-center">Month 4</span><span class="sidenav-headermonth text-center">Month 5</span><span class="sidenav-headermonth text-center">Month 6</span><span class="sidenav-headermonth text-center">Month 7</span><span class="sidenav-headermonth text-center">Month 7</span><span class="sidenav-headermonth text-center">Month 8</span><span class="sidenav-headermonth text-center">Month 9</span><span class="sidenav-headermonth text-center">Month 10</span><span class="sidenav-headermonth text-center">Month 11</span><span class="sidenav-headermonth text-center">Month 12</span>
+     
     </div>
+      
   </div>
 </div>

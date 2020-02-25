@@ -35,6 +35,17 @@ $highlightBorderColor: #FF9800;
   border-style: solid;
 }
 
+.sidenav-headermonth {
+  text-align: center;
+  line-height: $nodeHeight - 2px;
+  height: $nodeHeight - 2px;
+  min-height: $nodeHeight - 2px;
+  border-width: 1px 3px 1px 0;
+  border-color: $borderColor;
+  border-style: solid;
+  width: 70px;
+}
+
 // tree node height for sidebar
 ::ng-deep mat-tree-node {
   height: $nodeHeight;
