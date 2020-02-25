@@ -1,5 +1,46 @@
-<p>
-  proposal-form-approve works!
-</p>
+<div class="page-layout carded  fullwidth inner-scroll">
+  <div class="top-bg accent"></div>
 
-<app-form-approve></app-form-approve>
+  <div class="center">
+
+    <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+        <button class="mat-icon-button mr-0 mr-sm-16" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <div class="logo mb-24 mb-md-0" fxLayout="row" fxFlex="100" fxFlex.gt-sm="60" fxLayoutAlign="start center">
+          <mat-icon class="logo-icon s-32 mr-16">
+            edit
+          </mat-icon>
+          <span class="logo-text h1">
+            title
+          </span>
+
+        </div>
+        <div fxFlex="100" fxFlex.gt-sm="40" class="pl-20  pr-16" fxLayoutAlign="end">
+          <button>
+            btn name
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="content">
+        <mat-tab-group mat-stretch-tabs>
+          <mat-tab label="tab001">
+            content1
+          </mat-tab>
+          <mat-tab label="tab002">
+            content2
+          </mat-tab>
+          <mat-tab label="tab003">
+            contect3
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

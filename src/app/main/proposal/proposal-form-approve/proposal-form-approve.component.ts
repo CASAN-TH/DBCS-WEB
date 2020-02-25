@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from "@angular/common";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-proposal-form-approve',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProposalFormApproveComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private spinner: NgxSpinnerService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
+  }
+
+  goBack() {
+    this.spinner.show();
+    this.location.back();
   }
 
 }
