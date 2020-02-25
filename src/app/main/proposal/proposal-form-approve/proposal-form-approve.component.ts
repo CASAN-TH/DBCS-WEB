@@ -15,6 +15,7 @@ export class ProposalFormApproveComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.spinner.hide();
   }
 
   goBack() {

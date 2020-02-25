@@ -71,6 +71,11 @@ export class ProposalListComponent implements OnInit {
 
   }
 
+  sendApprove(){
+    this.spinner.show();
+    this.router.navigateByUrl("/proposal/proposalFormApprove");
+  }
+
   updateFilter(event) {
     //change search keyword to lower case
     // const val = event.target.value.toLowerCase();

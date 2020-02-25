@@ -26,7 +26,7 @@ const routes = [
     resolve: { item: ProposalService }
   },
   {
-    path: "proposalFormApprove/:id",
+    path: "proposalFormApprove",
     component: ProposalFormApproveComponent,
     canActivate: [AuthenGuardService]
     // resolve: { item: ProposalService }
