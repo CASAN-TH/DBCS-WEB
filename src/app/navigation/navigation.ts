@@ -13,7 +13,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'ข้อมูลยุทธศาสตร์',
                 type     : 'item',
                 icon     : 'email',
-                url      : '/sample01',
+                url      : '/strategic',
                 
             },
             {
@@ -22,7 +22,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'ข้อมูลหมวดรายจ่าย',
                 type     : 'item',
                 icon     : 'email',
-                url      : '/sample02',
+                url      : '/expenditure',
                 
             },
             {
@@ -31,7 +31,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'ข้อมูลหน่วยงาน',
                 type     : 'item',
                 icon     : 'email',
-                url      : '/sample03',
+                url      : '/department',
                 
             },
             {
@@ -40,7 +40,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'ข้อมูลแผนงบประมาณ',
                 type     : 'item',
                 icon     : 'email',
-                url      : '/sample0ภ',
+                url      : '/estimateplan',
                 badge    : {
                     title    : '25',
                     translate: '3',
