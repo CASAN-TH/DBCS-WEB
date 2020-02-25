@@ -6,14 +6,28 @@
   <!-- CENTER -->
   <div class="center">
     <!-- HEADER -->
-    <div class="header accent" fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <div
+      class="header accent"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between center"
+    >
       <!-- APP TITLE -->
-      <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }">
+      <div
+        class="logo mb-24 mb-md-0"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+      >
+        <mat-icon
+          class="logo-icon s-32 mr-16"
+          [@animate]="{ value: '*', params: { delay: '50ms', scale: '0.2' } }"
+        >
           format_list_numbered
         </mat-icon>
-        <span class="logo-text h1" [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }">
-          PROPOSALList
+        <span
+          class="logo-text h1"
+          [@animate]="{ value: '*', params: { delay: '100ms', x: '-25px' } }"
+        >
+        DEPARTMENTList
         </span>
       </div>
       <!-- / APP TITLE -->
@@ -26,13 +40,6 @@
         </div>
       </div>
       <!-- / SEARCH -->
-
-      <div>
-        <button mat-fab color="accent" (click)="sendApprove()">
-          <mat-icon class="icon-position">send</mat-icon>
-        </button>
-      </div>
-
     </div>
     <!-- / HEADER -->
 
@@ -40,7 +47,7 @@
     <div class="content-card">
       <!-- CONTENT -->
       <div class="content">
-        <app-prop-list [rows]="rows" (editProposal)="editProposal($event)"></app-prop-list>
+        <h2>{{'DEPARTMENT.HELLO' | translate}}</h2>
       </div>
     </div>
     <!-- /CONTENT CARD -->
@@ -48,7 +55,13 @@
   <!-- /CENTER -->
 </div>
 <!-- ADD CONTACT BUTTON -->
-<button fxLayoutAlign="center center" class="mat-fab warn" id="add-button" aria-label="add" (click)="clickAdd()">
+<button
+  fxLayoutAlign="center center"
+  class="mat-fab warn"
+  id="add-button"
+  aria-label="add"
+  (click)="clickAdd()"
+>
   <mat-icon>add</mat-icon>
 </button>
 <!-- / ADD CONTACT BUTTON -->
