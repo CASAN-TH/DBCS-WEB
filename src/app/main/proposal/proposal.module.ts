@@ -14,6 +14,8 @@ import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor'
 import { ProjectPipe } from './pipes/project.pipe';
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { MatDialogModule } from '@angular/material/dialog';
+import { ProposalFormApproveComponent } from './proposal-form-approve/proposal-form-approve.component';
+import { FormApproveComponent } from './components/form-approve/form-approve.component';
 
 
 const routes = [
@@ -22,6 +24,12 @@ const routes = [
     component: ProposalFormComponent,
     canActivate: [AuthenGuardService],
     resolve: { item: ProposalService }
+  },
+  {
+    path: "proposalFormApprove",
+    component: ProposalFormApproveComponent,
+    canActivate: [AuthenGuardService]
+    // resolve: { item: ProposalService }
   },
   {
     path: '**',
@@ -37,7 +45,9 @@ const routes = [
     ProposalFormComponent,
     PropListComponent,
     Form001Component,
-    ProjectPipe
+    ProjectPipe,
+    ProposalFormApproveComponent,
+    FormApproveComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -70,7 +80,8 @@ const routes = [
   ],
   exports: [
     ProposalListComponent,
-    ProposalFormComponent
+    ProposalFormComponent,
+    ProposalFormApproveComponent
   ]
 })
 export class ProposalModule { }
