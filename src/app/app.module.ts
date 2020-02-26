@@ -97,6 +97,27 @@ const appRoutes: Routes = [
     path: "proposal",
     loadChildren: "./main/proposal/proposal.module#ProposalModule"
   },
+  
+  {
+    path: "project",
+    loadChildren: "./main/project/project.module#ProjectModule"
+  },
+  {
+    path: "allocate",
+    loadChildren: "./main/allocate/allocate.module#AllocateModule"
+  },
+  {
+    path: "transfer",
+    loadChildren: "./main/transfer/transfer.module#TransferModule"
+  },
+  {
+    path: "manage",
+    loadChildren: "./main/manage/manage.module#ManageModule"
+  },
+  {
+    path: "report",
+    loadChildren: "./main/report/report.module#ReportModule"
+  },
   {
     path: "**",
     redirectTo: "proposal"

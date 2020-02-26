@@ -44,7 +44,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'ส่ง สงป',
                 type     : 'item',
                 icon     : 'account_balance',
-                url      : '/sent',
+                url      : '/project',
                 badge    : {
                     title    : '25',
                     translate: '3',
@@ -66,7 +66,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'จัดสรรงบประมาณ',
                 type     : 'item',
                 icon     : 'call_split',
-                url      : '/sample2',
+                url      : '/allocate',
                 badge    : {
                     title    : '25',
                     translate: 'NAV.SAMPLE.BADGE',
@@ -80,7 +80,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'โอนเปลี่ยนแปลงงบประมาณ',
                 type     : 'item',
                 icon     : 'call_split',
-                url      : '/sample23',
+                url      : '/transfer',
                 badge    : {
                     title    : '25',
                     translate: 'NAV.SAMPLE.BADGE',
@@ -102,7 +102,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'บริหารโครงการ',
                 type     : 'item',
                 icon     : 'event_note',
-                url      : '/sample3',
+                url      : '/manage',
                 badge    : {
                     title    : '25',
                     translate: 'NAV.SAMPLE.BADGE',
@@ -124,7 +124,7 @@ export const navigation: FuseNavigation[] = [
                 translate: 'รายงงานความคืบหน้า',
                 type     : 'item',
                 icon     : 'insert_chart',
-                url      : '/sample4',
+                url      : '/report',
                 badge    : {
                     title    : '25',
                     translate: 'NAV.SAMPLE.BADGE',

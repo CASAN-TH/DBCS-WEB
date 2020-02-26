@@ -7,13 +7,13 @@ import { locale as thai } from '../i18n/th';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-strategic-list',
-  templateUrl: './strategicList.component.html',
-  styleUrls: ['./strategicList.component.scss'],
+  selector: 'app-manage-list',
+  templateUrl: './manageList.component.html',
+  styleUrls: ['./manageList.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: fuseAnimations
 })
-export class StrategicListComponent implements OnInit {
+export class ManageListComponent implements OnInit {
 
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
@@ -28,7 +28,7 @@ export class StrategicListComponent implements OnInit {
   }
 
   clickAdd() {
-    this.router.navigateByUrl("/strategic/StrategicForm/new");
+    this.router.navigateByUrl("/manage/ManageForm/new");
   }
 
   updateFilter(event) {
