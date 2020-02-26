@@ -43,8 +43,18 @@
           class="pl-20  pr-16"
           fxLayoutAlign="end"
         >
-          <button [disabled]="proposalForm.invalid" (click)="onSave()">
-            บันทึกข้อมูล
+          <button
+            [disabled]="proposalForm.invalid"
+            mat-fab
+            color="warn"
+            (click)="onSave()"
+            *ngIf="
+              !proposalData.status ||
+              proposalData.status === 'initial' ||
+              proposalData.status === 'rejected'
+            "
+          >
+            <mat-icon class="icon-position">save</mat-icon>
           </button>
         </div>
       </div>
@@ -55,10 +65,8 @@
     <!-- CONTENT CARD -->
     <div class="content-card">
       <!-- CONTENT -->
-      <div class="content" (drop)="drop($event)" (dragover)="allowDrop($event)">
-       
-        <mat-tab-group fxFlex>
-          
+      <div class="content clickable dropzone" (drop)="drop($event)" (dragover)="allowDrop($event)">
+        <mat-tab-group #tabGroup fxFlex>
           <mat-tab label="แบบฟอร์มข้อเสนอโครงการ (กผง001)">
             <app-form001
               class="pt-2"
@@ -66,24 +74,62 @@
               [lovData]="lovData"
             ></app-form001>
           </mat-tab>
-          
+
           <mat-tab
             label="แผนการดำเนินโครงการและแผนการใช้จ่ายเงินงบประมาณ (กผง002)"
           >
+            <app-budget-plan></app-budget-plan>
           </mat-tab>
-          <mat-tab class="document" label="แบบฟอร์มประมาณการ (กผง003)">
-            <iframe
-              src="https://view.officeapps.live.com/op/embed.aspx?src=https://test-001-01.s3.ap-southeast-1.amazonaws.com/%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%9F%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%A1%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B9%80%E0%B8%AA%E0%B8%99%E0%B8%AD%E0%B8%A3%E0%B8%96%E0%B8%95%E0%B8%A3%E0%B8%A7%E0%B8%88%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B9%8C.doc"
-              width="100%"
-              height="100%"
-              frameborder="0"
-            ></iframe>
+          <mat-tab label="เอกสารแนบประกอบการพิจรณา">
+            <label class="frm003" fxLayout="column" for="file-input">
+              <p fxLayoutAlign="center center">
+                <mat-icon fxLayoutAlign="center center">backup</mat-icon>
+              </p>
+              <p fxLayoutAlign="center end">
+                คุณสามารถลากและปล่อยไฟล์ ในนี้เพื่ออัพโหลด
+              </p>
+              <p fxLayoutAlign="center end">
+                หรือ คลิ๊กเพื่อเลือกไฟล์ จากไดเรกทอรีของท่าน
+              </p>
+              <input
+                name="detectFiles"
+                id="file-input"
+                type="file"
+                (change)="fileBrowseHandler($event)"
+              />
+            </label>
+            <div fxLayout="column" fxFlex>
+              <div fxLayout="row wrap" class="containerfile">
+                <div fxFlex="20" fxLayoutAlign="center" class="single-file" *ngFor="let file of files; let i = index">
+                  <img *ngIf="file.type === 'application/pdf'" src="https://image.flaticon.com/icons/svg/136/136522.svg"
+                    width="45px" alt="file">
+                  <img *ngIf="file.type === 'application/doc' || file.type === 'application/msword' || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'" src="https://image.flaticon.com/icons/svg/136/136521.svg"
+                    width="45px" alt="file">
+                  <img *ngIf="file.type === 'application/zip'" src="https://image.flaticon.com/icons/svg/136/136544.svg"
+                    width="45px" alt="file">
+                  <img *ngIf="file.type === 'image/jpeg'" src="https://image.flaticon.com/icons/svg/35/35896.svg" width="45px"
+                    alt="file">
+                  <img *ngIf="file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+                    src="https://image.flaticon.com/icons/svg/136/136532.svg" width="45px" alt="file">
+                  <img *ngIf="file.type === 'application/vnd.ms-excel'" src="https://image.flaticon.com/icons/svg/136/136532.svg"
+                    width="45px" alt="file">
+                  <img *ngIf="!file.type" src="https://image.flaticon.com/icons/svg/136/136549.svg" width="45px" alt="file">
+            
+                  <h4 class="text-container">
+                    {{ file.name }}
+                  </h4>
+                  <div>
+                    <img src="https://image.flaticon.com/icons/svg/753/753345.svg" class="delete" width="20px" alt="file"
+                      (click)="deleteFile()">
+                  </div>
+                </div>    
+              </div>
+            </div>
           </mat-tab>
-          
         </mat-tab-group>
         <!--  -->
       </div>
-      
+
       <!-- /CONTENT -->
     </div>
     <!-- /CONTENT CARD -->

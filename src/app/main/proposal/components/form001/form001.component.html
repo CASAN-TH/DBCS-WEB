@@ -15,7 +15,12 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.plancode">
+  <div
+    fxLayout="row"
+    class="pl-20  pr-16"
+    fxLayoutAlign="center"
+    *ngIf="proposalForm.value.plancode"
+  >
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>ผลผลิต/โครงการ</mat-label>
       <mat-select
@@ -31,10 +36,19 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.projectcode">
+  <div
+    fxLayout="row"
+    class="pl-20  pr-16"
+    fxLayoutAlign="center"
+    *ngIf="proposalForm.value.projectcode"
+  >
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>กิจกรรม</mat-label>
-      <mat-select formControlName="activitycode" name="activitycode" (selectionChange)="onActivityChange($event)">
+      <mat-select
+        formControlName="activitycode"
+        name="activitycode"
+        (selectionChange)="onActivityChange($event)"
+      >
         <mat-option>--</mat-option>
         <mat-option *ngFor="let item of activityDataList" [value]="item.code">{{
           item.name
@@ -43,10 +57,19 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.activitycode">
+  <div
+    fxLayout="row"
+    class="pl-20  pr-16"
+    fxLayoutAlign="center"
+    *ngIf="proposalForm.value.activitycode"
+  >
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>แหล่งเงิน</mat-label>
-      <mat-select formControlName="sourcecode" name="sourcecode" (selectionChange)="onSourceChange($event)">
+      <mat-select
+        formControlName="sourcecode"
+        name="sourcecode"
+        (selectionChange)="onSourceChange($event)"
+      >
         <mat-option>--</mat-option>
         <mat-option *ngFor="let item of sourceDataList" [value]="item.code">{{
           item.name
@@ -55,7 +78,7 @@
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center" *ngIf="proposalForm.value.sourcecode">
+  <div fxLayout="row" class="pl-20  pr-16" fxLayoutAlign="center">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex>
       <mat-label>ชื่อโครงการ</mat-label>
       <textarea matInput formControlName="name" name="name"></textarea>
@@ -70,8 +93,15 @@
       fxLayoutAlign="center"
     >
       <mat-form-field class="example-full-width" appearance="outline" fxFlex>
-        <mat-label>ปีเริ่มต้น</mat-label>
-        <input matInput formControlName="startdate" name="startdate"/>
+        <mat-label>วันที่เริ่มต้นโครงการ</mat-label>
+        <input
+          matInput
+          formControlName="startdate"
+          name="startdate"
+          [matDatepicker]="startdate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="startdate"></mat-datepicker-toggle>
+        <mat-datepicker #startdate></mat-datepicker>
       </mat-form-field>
     </div>
     <div
@@ -81,13 +111,19 @@
       fxLayoutAlign="center"
     >
       <mat-form-field class="example-full-width" appearance="outline" fxFlex>
-        <mat-label>ปีสิ้นสุด</mat-label>
-        <input matInput formControlName="enddate" name="enddate"/>
+        <mat-label>วันที่สิ้นสุดโครงการ</mat-label>
+        <input matInput formControlName="enddate" name="enddate" [matDatepicker]="enddate"/>
+        <mat-datepicker-toggle matSuffix [for]="enddate"></mat-datepicker-toggle>
+        <mat-datepicker #enddate></mat-datepicker>
       </mat-form-field>
     </div>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="start start" *ngIf="proposalForm.value.name">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start start"
+    *ngIf="proposalForm.value.name"
+  >
     <div
       fxFlex="100"
       fxFlex.gt-sm="50"
@@ -96,7 +132,7 @@
     >
       <mat-form-field class="example-full-width" appearance="outline" fxFlex>
         <mat-label>งบประมาณทั้งโครงการ</mat-label>
-        <input matInput formControlName="budgetsummary" name="budgetsummary"/>
+        <input matInput formControlName="budgetsummary" name="budgetsummary" />
       </mat-form-field>
     </div>
     <div
@@ -107,7 +143,7 @@
     >
       <mat-form-field class="example-full-width" appearance="outline" fxFlex>
         <mat-label>งบประมาณที่จะใช้ในปีนี้</mat-label>
-        <input matInput formControlName="budgetinyear" name="budgetinyear"/>
+        <input matInput formControlName="budgetinyear" name="budgetinyear" />
       </mat-form-field>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { FuseTranslationLoaderService } from "@fuse/services/translation-loader.service";
 import { fuseAnimations } from "@fuse/animations";
 
@@ -21,6 +21,8 @@ import { DialogConfirmService } from "app/dialog-confirm/service/dialog-confirm.
   animations: fuseAnimations
 })
 export class ProposalFormComponent implements OnInit {
+  @ViewChild("tabGroup") tabGroup;
+  files: any[] = [];
   proposalForm: FormGroup;
   proposalData: any = {};
   lovData: any = [];
@@ -126,8 +128,23 @@ export class ProposalFormComponent implements OnInit {
     this.proposalData = this.route.snapshot.data.item
       ? this.route.snapshot.data.item.data
       : {
-          // owner:
-          //   "<p>ชื่อ-นามสกุล&nbsp;&nbsp;&nbsp;&nbsp;นายอุทัย เตียนพลกรัง</p><p>ตำแหน่ง&nbsp;&nbsp;&nbsp;&nbsp;       ผู้อำนวยการศูนย์อำนวยการน้ำแห่งชาติ</p><p>สังกัด&nbsp;&nbsp;&nbsp;&nbsp;สำนักงานทรัพยากรน้ำแห่งชาติ</p><p>โทรศัพท์เคลื่อนที่&nbsp;&nbsp;&nbsp;&nbsp;0-2521-9141</p><p>E-mail address&nbsp;&nbsp;&nbsp;&nbsp;nwcc.onwr@gmail.com</p><p></p><p></p>"
+          compcode: "01035",
+          budgetyear: 2563,
+          owner: "-",
+          criteria: "-",
+          objectives: "-",
+          relatetostrategyoutside: "-",
+          relatetostrategyinside: "-",
+          location: "-",
+          targetgroup: "-",
+          timeline: "-",
+          process: "-",
+          resulthistory: "-",
+          budgetpaln: "รายละเอียดแผนการใช้จ่ายงบประมาณตามแบบฟอร์ม กผง.002",
+          output: "-",
+          outcome: "-",
+          benefit: "-",
+          indicator: "-"
         };
     this.proposalForm = this.createForm();
     this.spinner.hide();
@@ -180,6 +197,9 @@ export class ProposalFormComponent implements OnInit {
   async onSave() {
     // console.log(this.proposalForm.value);
     this.spinner.show();
+    this.proposalForm.value.planname = this.lovData.filter((item: any) => {
+      return item.code === this.proposalForm.value.plancode;
+    })[0].name;
     this.proposalForm.value.projectname = this.lovData.filter((item: any) => {
       return item.code === this.proposalForm.value.projectcode;
     })[0].name;
@@ -189,7 +209,7 @@ export class ProposalFormComponent implements OnInit {
     this.proposalForm.value.sourcename = this.lovData.filter((item: any) => {
       return item.code === this.proposalForm.value.sourcecode;
     })[0].name;
-    
+
     if (this.proposalData._id) {
       this.proposalForm.value._id = this.proposalData._id;
       console.log(this.proposalForm.value);
@@ -218,42 +238,75 @@ export class ProposalFormComponent implements OnInit {
     ev.preventDefault();
     const files = ev.dataTransfer.files;
     console.log(files);
-    if (files[0].type === "application/msword" || files[0].type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
-      // alert(files[0].name);
-      this.dialogConfirmService
-        .show({
-          title: "นำเข้าข้อมูลจากเอกสาร",
-          message: `ท่านต้องการนำเข้าข้อมูลจากเอกสาร ${files[0].name} ใช่ หรือ ไม่ ?`
-        })
-        .then(result => {
-          if (result) {
-            this.spinner.show();
-            this.proposalService.uploadProposalData(files[0]).subscribe(
-              (res: any) => {
-                console.log(res);
-                this.proposalData = res.data;
-                this.proposalForm = this.createForm();
-                this.spinner.hide();
-              },
-              err => {
-                console.log(err);
-                this.spinner.hide();
-                throw new Error(
-                  "รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง !<br>ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น..."
+    console.log(this.tabGroup.selectedIndex);
+    switch (this.tabGroup.selectedIndex) {
+      case 0:
+        if (
+          files[0].type === "application/msword" ||
+          files[0].type ===
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        ) {
+          // alert(files[0].name);
+          this.dialogConfirmService
+            .show({
+              title: "นำเข้าข้อมูลจากเอกสาร",
+              message: `ท่านต้องการนำเข้าข้อมูลจากเอกสาร ${files[0].name} ใช่ หรือ ไม่ ?`
+            })
+            .then(result => {
+              if (result) {
+                this.spinner.show();
+                this.proposalService.uploadProposalData(files[0]).subscribe(
+                  (res: any) => {
+                    console.log(res);
+                    this.proposalData = res.data;
+                    this.proposalForm = this.createForm();
+                    this.spinner.hide();
+                  },
+                  err => {
+                    console.log(err);
+                    this.spinner.hide();
+                    throw new Error(
+                      "รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง !<br>ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น..."
+                    );
+                  }
                 );
               }
-            );
-          }
-        });
-    } else {
-      //format is wrong,
-      throw new Error(
-        "รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง ! \n ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น..."
-      );
+            });
+        } else {
+          //format is wrong,
+          throw new Error(
+            "รูปแบบเอกสารที่ท่านอัพโหลดไม่ถูกต้อง ! \n ระบบรองรับเฉพาะเอกสารตามรูปแบบที่กองแผนงานกำหนดเท่านั้น..."
+          );
+        }
+        break;
+      case 1:
+        break;
+      case 2:
+        this.prepareFilesList(files);
+        break;
     }
   }
 
   allowDrop(ev) {
     ev.preventDefault();
+  }
+
+  fileBrowseHandler(ev) {
+    console.log(ev);
+    this.prepareFilesList(ev.target.files);
+  }
+
+  deleteFile(index: number) {
+    this.files.splice(index, 1);
+  }
+
+  prepareFilesList(files: Array<any>) {
+    console.log(files);
+    for (const item of files) {
+      console.log(item);
+      item.progress = 0;
+      this.files.push(item);
+    }
+
   }
 }

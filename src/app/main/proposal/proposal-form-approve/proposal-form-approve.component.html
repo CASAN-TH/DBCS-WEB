@@ -2,42 +2,105 @@
   <div class="top-bg accent"></div>
 
   <div class="center">
-
-    <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+    <div
+      class="header accent"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
       <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
         <button class="mat-icon-button mr-0 mr-sm-16" (click)="goBack()">
           <mat-icon>arrow_back</mat-icon>
         </button>
 
-        <div class="logo mb-24 mb-md-0" fxLayout="row" fxFlex="100" fxFlex.gt-sm="60" fxLayoutAlign="start center">
+        <div
+          class="logo mb-24 mb-md-0"
+          fxLayout="row"
+          fxFlex="100"
+          fxFlex.gt-sm="60"
+          fxLayoutAlign="start center"
+        >
           <mat-icon class="logo-icon s-32 mr-16">
             edit
           </mat-icon>
           <span class="logo-text h1">
-            title
+            ขอตั้งงบประมาณรายจ่ายประจำปี
           </span>
-
         </div>
-        <div fxFlex="100" fxFlex.gt-sm="40" class="pl-20  pr-16" fxLayoutAlign="end">
-          <button>
-            btn name
+        <div
+          fxFlex="100"
+          fxFlex.gt-sm="40"
+          class="pl-20  pr-16"
+          fxLayoutAlign="end"
+        >
+          <button
+            mat-fab
+            color="warn"
+            (click)="onSave()"
+            *ngIf="proposalData.status === 'initial' || proposalData.status === 'rejected'"
+          >
+            <mat-icon class="icon-position">send</mat-icon>
           </button>
+          <button
+            mat-fab
+            color="warn"
+            [matMenuTriggerFor]="moreMenu"
+            *ngIf="proposalData.status === 'wait for approve'"
+          >
+            <mat-icon class="icon-position">verified_user</mat-icon>
+          </button>
+          <mat-menu #moreMenu>
+            <button
+              mat-menu-item
+              aria-label="edit"
+              (click)="approve()"
+            >
+              <mat-icon>check</mat-icon>
+              <span>ผ่าน</span>
+            </button>
+            <button
+              mat-menu-item
+              aria-label="edit"
+              (click)="reject()"
+            >
+              <mat-icon>clear</mat-icon>
+              <span>ไม่ผ่าน</span>
+            </button>
+            
+          </mat-menu>
         </div>
-
       </div>
     </div>
 
     <div class="content-card">
       <div class="content">
-        <mat-tab-group mat-stretch-tabs>
-          <mat-tab label="tab001">
-            content1
+        <mat-tab-group fxFlex>
+          <mat-tab class="document" label="แบบฟอร์มประมาณการ (กผง003)">
+            <iframe
+              *ngIf="file001Url"
+              [src]="file003Url | safe"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
           </mat-tab>
-          <mat-tab label="tab002">
-            content2
+          <mat-tab label="แบบฟอร์มข้อเสนอโครงการ (กผง001)">
+            <iframe
+              *ngIf="file001Url"
+              [src]="file001Url | safe"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
           </mat-tab>
-          <mat-tab label="tab003">
-            contect3
+          <mat-tab
+            label="แผนการดำเนินโครงการและแผนการใช้จ่ายเงินงบประมาณ (กผง002)"
+          >
+          </mat-tab>
+          <mat-tab
+            label="เอกสารแนบประกอบการพิจรณา"
+          >
           </mat-tab>
         </mat-tab-group>
       </div>

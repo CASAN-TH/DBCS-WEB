@@ -1,0 +1,24 @@
+<div class="container" fxLayout="column">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <a mat-button [routerLink]="['/home']">
+        <mat-icon>home</mat-icon>
+      </a>
+      <span>njnsjdnjsnd</span>
+      <span fxFlex></span>
+      <span>ข้อมูลแผนการดำเนินโครงการ</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="sidenav-container" fxFlex fxLayout="row">
+    <div class="sidenav names" [ngStyle]="sidebarStyle" fxLayout="column">
+      <div class="sidenav-header text-center">ชื่อโครงการ / รายละเอียด</div>
+      
+    </div>
+    <div class="sidenav date-pickers" fxLayout="column">
+      <div class="sidenav-header text-center">วันที่ดำเนินการ / วันที่สิ้นสุด</div>
+    </div>
+    <div class="sidenav-content calendar" fxLayout="row">
+      <span class="sidenav-headermonth text-center">Month 1</span><span class="sidenav-headermonth text-center">Month 2</span><span class="sidenav-headermonth text-center">Month 3</span><span class="sidenav-headermonth text-center">Month 4</span><span class="sidenav-headermonth text-center">Month 5</span><span class="sidenav-headermonth text-center">Month 6</span><span class="sidenav-headermonth text-center">Month 7</span><span class="sidenav-headermonth text-center">Month 7</span><span class="sidenav-headermonth text-center">Month 8</span><span class="sidenav-headermonth text-center">Month 9</span><span class="sidenav-headermonth text-center">Month 10</span><span class="sidenav-headermonth text-center">Month 11</span><span class="sidenav-headermonth text-center">Month 12</span>
+    </div>
+  </div>
+</div>

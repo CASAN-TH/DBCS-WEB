@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from "@angular/core";
+import { NgModule, ErrorHandler, LOCALE_ID } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -13,7 +13,8 @@ import {
   DateAdapter,
   MAT_DATE_LOCALE,
   MAT_DATE_FORMATS,
-  MatSnackBarModule
+  MatSnackBarModule,
+  NativeDateAdapter
 } from "@angular/material";
 import { TranslateModule } from "@ngx-translate/core";
 import "hammerjs";
@@ -31,10 +32,10 @@ import { fuseConfig } from "app/fuse-config";
 import { AppComponent } from "app/app.component";
 import { LayoutModule } from "app/layout/layout.module";
 import { NgxSpinnerModule } from "ngx-spinner";
-import { GlobalErrorHandler } from './global-error-handler';
-import { ServerErrorInterceptor } from './server-error.interceptor';
-import { DialogConfirmModule } from './dialog-confirm/dialog-confirm.module';
-
+import { GlobalErrorHandler } from "./global-error-handler";
+import { ServerErrorInterceptor } from "./server-error.interceptor";
+import { DialogConfirmModule } from "./dialog-confirm/dialog-confirm.module";
+import { SafePipe } from './safe-pipe.pipe';
 
 export const MY_FORMATS = {
   parse: {
@@ -42,11 +43,30 @@ export const MY_FORMATS = {
   },
   display: {
     dateInput: "DD/MM/YYYY",
-    monthYearLabel: "MM YYYY",
+    monthYearLabel: "MMMM YYYY",
     dateA11yLabel: "DD/MM/YYYY",
     monthYearA11yLabel: "MM YYYY"
   }
 };
+
+export class CarDateAdapter extends NativeDateAdapter {
+
+  /**
+   * Formats the date as per the display format.
+   * 
+   * @param date The date
+   * @param displayFormat The display format 
+   */
+  format(date: Date, displayFormat: Object): string {
+      if(displayFormat === 'input') {
+          let dayOfMonth : string = date.toLocaleDateString('default', { day: 'numeric' });
+          let monthOfYear :  string = date.toLocaleDateString('default', { month: 'long' }).substring(0, 3);
+          let year : number = date.getFullYear();
+          return `${monthOfYear} ${dayOfMonth}, ${year}`;
+      }
+      return date.toDateString();
+  }
+}
 
 const appRoutes: Routes = [
   {
@@ -79,7 +99,7 @@ const appRoutes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "estimate"
+    redirectTo: "proposal"
   }
 ];
 
@@ -116,12 +136,12 @@ const appRoutes: Routes = [
   entryComponents: [],
   bootstrap: [AppComponent],
   providers: [
-    { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ServerErrorInterceptor,
-      multi: true
-    },
+    // { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: ServerErrorInterceptor,
+    //   multi: true
+    // },
     { provide: MAT_DATE_LOCALE, useValue: "th-TH" },
     {
       provide: DateAdapter,
@@ -131,6 +151,4 @@ const appRoutes: Routes = [
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
   ]
 })
-export class AppModule { }
-
-
+export class AppModule {}

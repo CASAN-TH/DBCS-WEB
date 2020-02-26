@@ -10,43 +10,11 @@ export const navigation: FuseNavigation[] = [
             {
                 id       : 'sample',
                 title    : 'Sample',
-                translate: 'ข้อมูลยุทธศาสตร์',
+                translate: 'ข้อมูลข้อมูลพื้นฐาน',
                 type     : 'item',
-                icon     : 'email',
+                icon     : 'description',
                 url      : '/strategic',
                 
-            },
-            {
-                id       : 'sample',
-                title    : 'Sample',
-                translate: 'ข้อมูลหมวดรายจ่าย',
-                type     : 'item',
-                icon     : 'email',
-                url      : '/expenditure',
-                
-            },
-            {
-                id       : 'sample',
-                title    : 'Sample',
-                translate: 'ข้อมูลหน่วยงาน',
-                type     : 'item',
-                icon     : 'email',
-                url      : '/department',
-                
-            },
-            {
-                id       : 'sample',
-                title    : 'Sample',
-                translate: 'ข้อมูลแผนงบประมาณ',
-                type     : 'item',
-                icon     : 'email',
-                url      : '/estimateplan',
-                badge    : {
-                    title    : '25',
-                    translate: '3',
-                    bg       : '#F44336',
-                    fg       : '#FFFFFF'
-                }
             }
         ]
     },
@@ -61,8 +29,8 @@ export const navigation: FuseNavigation[] = [
                 title    : 'Estimate',
                 translate: 'บันทึกคำของบประมาณ',
                 type     : 'item',
-                icon     : 'email',
-                url      : '/estimate',
+                icon     : 'assignment',
+                url      : '/proposal',
                 badge    : {
                     title    : '25',
                     translate: '3',
@@ -73,10 +41,10 @@ export const navigation: FuseNavigation[] = [
             {
                 id       : 'sample',
                 title    : 'Sample',
-                translate: 'พิจารณาคำของบประมาณ',
+                translate: 'ส่ง สงป',
                 type     : 'item',
-                icon     : 'email',
-                url      : '/proposal',
+                icon     : 'account_balance',
+                url      : '/sent',
                 badge    : {
                     title    : '25',
                     translate: '3',
@@ -97,8 +65,22 @@ export const navigation: FuseNavigation[] = [
                 title    : 'Sample',
                 translate: 'จัดสรรงบประมาณ',
                 type     : 'item',
-                icon     : 'email',
+                icon     : 'call_split',
                 url      : '/sample2',
+                badge    : {
+                    title    : '25',
+                    translate: 'NAV.SAMPLE.BADGE',
+                    bg       : '#F44336',
+                    fg       : '#FFFFFF'
+                }
+            },
+            {
+                id       : 'sample',
+                title    : 'Sample',
+                translate: 'โอนเปลี่ยนแปลงงบประมาณ',
+                type     : 'item',
+                icon     : 'call_split',
+                url      : '/sample23',
                 badge    : {
                     title    : '25',
                     translate: 'NAV.SAMPLE.BADGE',
@@ -117,9 +99,9 @@ export const navigation: FuseNavigation[] = [
             {
                 id       : 'sample',
                 title    : 'Sample',
-                translate: 'NAV.SAMPLE.TITLE',
+                translate: 'บริหารโครงการ',
                 type     : 'item',
-                icon     : 'email',
+                icon     : 'event_note',
                 url      : '/sample3',
                 badge    : {
                     title    : '25',
@@ -139,9 +121,9 @@ export const navigation: FuseNavigation[] = [
             {
                 id       : 'sample',
                 title    : 'Sample',
-                translate: 'NAV.SAMPLE.TITLE',
+                translate: 'รายงงานความคืบหน้า',
                 type     : 'item',
-                icon     : 'email',
+                icon     : 'insert_chart',
                 url      : '/sample4',
                 badge    : {
                     title    : '25',

@@ -13,12 +13,15 @@ export class Form001Component implements OnInit {
   projectDataList: any[];
   activityDataList: any[];
   sourceDataList: any[];
+ 
 
   // plancode: [this.proposalData.plancode, Validators.required],
   //     projectcode: [this.proposalData.projectcode, Validators.required],
   //     activitycode: [this.proposalData.activitycode, Validators.required],
   //     sourcecode: [this.proposalData.sourcecode, Validators.required],
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+
+  }
 
   ngOnInit() {
     this.planDataList = this.lovData.filter((item: any) => {

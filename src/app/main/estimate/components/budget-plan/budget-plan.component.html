@@ -1,5 +1,5 @@
 <div class="container" fxLayout="column">
-  <mat-toolbar color="primary">
+  <!-- <mat-toolbar color="primary">
     <mat-toolbar-row>
       <a mat-button [routerLink]="['/home']">
         <mat-icon>home</mat-icon>
@@ -8,7 +8,7 @@
       <span fxFlex></span>
       <span>ข้อมูลแผนการดำเนินโครงการ</span>
     </mat-toolbar-row>
-  </mat-toolbar>
+  </mat-toolbar> -->
   <div class="sidenav-container" fxFlex fxLayout="row">
     <!-- names -->
     <div class="sidenav names" [ngStyle]="sidebarStyle" fxLayout="column">
@@ -21,6 +21,7 @@
           <mat-form-field fxFlex floatLabel="never">
             <input matInput placeholder="Step Name" name="node" [(ngModel)]="node.name"
               (ngModelChange)="updateStepName(node, $event)" required>
+             
           </mat-form-field>
           <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<2">
             <mat-icon>add</mat-icon>
@@ -96,8 +97,18 @@
       </mat-tree>
     </div> -->
     <div class="sidenav-content calendar" fxLayout="row">
-      <span class="sidenav-headermonth text-center">Month 1</span><span class="sidenav-headermonth text-center">Month 2</span><span class="sidenav-headermonth text-center">Month 3</span><span class="sidenav-headermonth text-center">Month 4</span><span class="sidenav-headermonth text-center">Month 5</span><span class="sidenav-headermonth text-center">Month 6</span><span class="sidenav-headermonth text-center">Month 7</span><span class="sidenav-headermonth text-center">Month 7</span><span class="sidenav-headermonth text-center">Month 8</span><span class="sidenav-headermonth text-center">Month 9</span><span class="sidenav-headermonth text-center">Month 10</span><span class="sidenav-headermonth text-center">Month 11</span><span class="sidenav-headermonth text-center">Month 12</span>
-     
+      <span class="sidenav-headermonth text-center">ตค 62</span>
+      <span class="sidenav-headermonth text-center">พย 62</span>
+      <span class="sidenav-headermonth text-center">ธค 62</span>
+      <span class="sidenav-headermonth text-center">มค 63</span>
+      <span class="sidenav-headermonth text-center">กพ 63</span>
+      <span class="sidenav-headermonth text-center">มีค 63</span>
+      <span class="sidenav-headermonth text-center">เมย 63</span>
+      <span class="sidenav-headermonth text-center">พค 63</span>
+      <span class="sidenav-headermonth text-center">มิย 63</span>
+      <span class="sidenav-headermonth text-center">กค 63</span>
+      <span class="sidenav-headermonth text-center">สค 63</span>
+      <span class="sidenav-headermonth text-center">กย 63</span>
     </div>
       
   </div>

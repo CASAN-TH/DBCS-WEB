@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
-import { MatIconModule, MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule, MatExpansionModule, MatProgressSpinnerModule } from "@angular/material";
+import { MatIconModule, MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule, MatExpansionModule, MatProgressSpinnerModule, MatTreeModule, MatSliderModule, MatToolbarModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProposalService } from './services/proposal.service';
 import { PropListComponent } from './components/prop-list/prop-list.component';
@@ -15,7 +15,12 @@ import { ProjectPipe } from './pipes/project.pipe';
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProposalFormApproveComponent } from './proposal-form-approve/proposal-form-approve.component';
-import { FormApproveComponent } from './components/form-approve/form-approve.component';
+import { SafePipe } from 'app/safe-pipe.pipe';
+import { Form002Component } from './components/form002/form002.component';
+import { ResizableModule } from "angular-resizable-element";
+import { BudgetPlanComponent } from '../estimate/components/budget-plan/budget-plan.component';
+import { FacesheetComponent } from '../estimate/components/facesheet/facesheet.component';
+
 
 
 const routes = [
@@ -26,10 +31,10 @@ const routes = [
     resolve: { item: ProposalService }
   },
   {
-    path: "proposalFormApprove",
+    path: "proposalFormApprove/:id",
     component: ProposalFormApproveComponent,
-    canActivate: [AuthenGuardService]
-    // resolve: { item: ProposalService }
+    canActivate: [AuthenGuardService],
+    resolve: { item: ProposalService }
   },
   {
     path: '**',
@@ -41,13 +46,16 @@ const routes = [
 
 @NgModule({
   declarations: [
+    SafePipe,
     ProposalListComponent,
     ProposalFormComponent,
     PropListComponent,
     Form001Component,
     ProjectPipe,
     ProposalFormApproveComponent,
-    FormApproveComponent
+    Form002Component,
+    BudgetPlanComponent,
+    FacesheetComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -71,6 +79,11 @@ const routes = [
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+
+    MatTreeModule,
+    MatSliderModule,
+    MatToolbarModule,
+    ResizableModule,
 
     RichTextEditorAllModule,
 

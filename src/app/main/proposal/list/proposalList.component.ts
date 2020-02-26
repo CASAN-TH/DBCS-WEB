@@ -52,6 +52,10 @@ export class ProposalListComponent implements OnInit {
         this.spinner.show();
         this.router.navigateByUrl("/proposal/proposalForm/" + ev.data._id);
         break;
+      case "send":
+        this.spinner.show();
+        this.router.navigateByUrl("/proposal/proposalFormApprove/" + ev.data._id);
+        break;
       case "delete":
         const body = {
           title: "ยืนยันการลบ",
