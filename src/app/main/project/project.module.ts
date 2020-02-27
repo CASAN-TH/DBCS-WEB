@@ -7,6 +7,8 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectTableListComponent } from './components/project-table-list/project-table-list.component';
+import { ProjectFormBodyComponent } from './components/project-form-body/project-form-body.component';
 
 const routes = [
   {
@@ -24,7 +26,7 @@ const routes = [
 @NgModule({
   declarations: [
     ProjectListComponent, 
-    ProjectFormComponent
+    ProjectFormComponent, ProjectTableListComponent, ProjectFormBodyComponent
   ],
   imports: [
     RouterModule.forChild(routes),

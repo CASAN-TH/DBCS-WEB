@@ -157,12 +157,12 @@ const appRoutes: Routes = [
   entryComponents: [],
   bootstrap: [AppComponent],
   providers: [
-    // { provide: ErrorHandler, useClass: GlobalErrorHandler },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: ServerErrorInterceptor,
-    //   multi: true
-    // },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptor,
+      multi: true
+    },
     { provide: MAT_DATE_LOCALE, useValue: "th-TH" },
     {
       provide: DateAdapter,
