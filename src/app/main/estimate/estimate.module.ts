@@ -44,7 +44,7 @@ const routes = [
 ];
 
 @NgModule({
-  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent, BudgetPlanComponent, ProposalFormComponent],
+  declarations: [EstimateComponent, EstimatesComponent, FacesheetComponent, ProposalFormComponent],
   imports: [
     RouterModule.forChild(routes),
 

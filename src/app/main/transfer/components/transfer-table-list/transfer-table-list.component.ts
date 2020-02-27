@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transfer-table-list.component.scss']
 })
 export class TransferTableListComponent implements OnInit {
-
+  rows: Array<any>
   constructor() { }
 
   ngOnInit() {

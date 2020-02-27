@@ -4,10 +4,12 @@
   "license": "https://themeforest.net/licenses/terms/regular",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "bundle-report": "webpack-bundle-analyzer dist/stats.json",
+    "deploy": "node --max-old-space-size=8192 node_modules/@angular/cli/bin/ng build --prod --aot"
   },
   "private": true,
   "dependencies": {

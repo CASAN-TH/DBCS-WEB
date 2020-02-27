@@ -16,7 +16,6 @@ import { NgxDatatableModule } from "@swimlane/ngx-datatable";
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProposalFormApproveComponent } from './proposal-form-approve/proposal-form-approve.component';
 import { SafePipe } from 'app/safe-pipe.pipe';
-import { Form002Component } from './components/form002/form002.component';
 import { ResizableModule } from "angular-resizable-element";
 import { BudgetPlanComponent } from '../estimate/components/budget-plan/budget-plan.component';
 import { FacesheetComponent } from '../estimate/components/facesheet/facesheet.component';
@@ -53,9 +52,7 @@ const routes = [
     Form001Component,
     ProjectPipe,
     ProposalFormApproveComponent,
-    Form002Component,
-    BudgetPlanComponent,
-    FacesheetComponent
+    BudgetPlanComponent
   ],
   imports: [
     RouterModule.forChild(routes),

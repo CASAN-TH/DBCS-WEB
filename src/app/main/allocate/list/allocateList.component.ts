@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   animations: fuseAnimations
 })
 export class AllocateListComponent implements OnInit {
-
+  rows: Array<any>;
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private router: Router

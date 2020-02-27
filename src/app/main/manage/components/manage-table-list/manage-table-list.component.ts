@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-table-list.component.scss']
 })
 export class ManageTableListComponent implements OnInit {
-
+  rows: Array<any>;
   constructor() { }
 
   ngOnInit() {

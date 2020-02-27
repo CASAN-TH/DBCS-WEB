@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alloc-table-list.component.scss']
 })
 export class AllocTableListComponent implements OnInit {
-
+  rows: Array<any>;
   constructor() { }
 
   ngOnInit() {
