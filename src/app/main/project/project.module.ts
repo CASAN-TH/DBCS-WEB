@@ -9,6 +9,7 @@ import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatF
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectTableListComponent } from './components/project-table-list/project-table-list.component';
 import { ProjectFormBodyComponent } from './components/project-form-body/project-form-body.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const routes = [
   {
@@ -49,7 +50,8 @@ const routes = [
     MatButtonModule,
 
     TranslateModule,
-    FuseSharedModule
+    FuseSharedModule,
+    NgxDatatableModule
   ],
   exports: [
     ProjectListComponent,

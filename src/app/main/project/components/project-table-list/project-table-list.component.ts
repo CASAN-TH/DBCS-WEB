@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-project-table-list',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-table-list.component.scss']
 })
 export class ProjectTableListComponent implements OnInit {
-
+  @Input() rows: Array<any> = [];
+  @Output() editProposal: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+  }
+
+  editProposalData(type, index) {
+    this.editProposal.emit({
+      "type": type,
+      "data": this.rows[index]
+    });
   }
 
 }

@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   animations: fuseAnimations
 })
 export class ProjectListComponent implements OnInit {
-
+  rows: Array<any>;
   constructor(
     private _fuseTranslationLoaderService: FuseTranslationLoaderService,
     private router: Router
@@ -24,7 +24,32 @@ export class ProjectListComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.rows = [
+      {
+        budgetyear : 2562,
+        projects: 28,
+        pb:150000000,
+        ab:150000000,
+        ib:100000000,
+        ob:100000000,
+        budgetinyear:350000000,
+        budgetotheryear:50000000,
+        budgetsummary:400000000,
+        status: "ปิดปีงบประมาณ"
+      },
+      {
+        budgetyear : 2563,
+        projects: 32,
+        pb:100000000,
+        ab:100000000,
+        ib:100000000,
+        ob:100000000,
+        budgetinyear:250000000,
+        budgetotheryear:50000000,
+        budgetsummary:300000000,
+        status: "จัดเตรียมเอกสาร"
+      }
+    ]
   }
 
   clickAdd() {

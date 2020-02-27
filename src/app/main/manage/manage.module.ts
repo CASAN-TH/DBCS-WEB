@@ -7,6 +7,9 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { AuthenGuardService } from 'app/authentication/authen-guard.service';
 import { MatIconModule,MatMenuModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, MatTableModule, MatRadioModule, MatInputModule, MatListModule, MatButtonModule, MatTabsModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ManageTableListComponent } from './components/manage-table-list/manage-table-list.component';
+import { ManageFormBodyComponent } from './components/manage-form-body/manage-form-body.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const routes = [
   {
@@ -24,7 +27,7 @@ const routes = [
 @NgModule({
   declarations: [
     ManageListComponent, 
-    ManageFormComponent
+    ManageFormComponent, ManageTableListComponent, ManageFormBodyComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -47,7 +50,8 @@ const routes = [
     MatButtonModule,
 
     TranslateModule,
-    FuseSharedModule
+    FuseSharedModule,
+    NgxDatatableModule
   ],
   exports: [
     ManageListComponent,
